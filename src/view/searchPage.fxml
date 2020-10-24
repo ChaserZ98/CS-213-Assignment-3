@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -15,26 +15,32 @@
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="203.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for photos by a date range:">
+      <Text layoutX="38.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for photos by a date range:">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="228.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for photos by tag:">
+      <Text layoutX="38.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for photos by tag:">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Text>
-      <DatePicker layoutX="193.0" layoutY="119.0" />
-      <DatePicker layoutX="193.0" layoutY="164.0" />
-      <Text layoutX="101.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Earliest Date:" />
-      <Text layoutX="101.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latest Date:" />
-      <Button layoutX="446.0" layoutY="139.0" mnemonicParsing="false" text="Search" />
-      <Text layoutX="101.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tage Value:" />
-      <Text layoutX="103.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name:" />
-      <TextField layoutX="193.0" layoutY="317.0" />
-      <TextField layoutX="193.0" layoutY="269.0" />
-      <Button layoutX="446.0" layoutY="291.0" mnemonicParsing="false" text="Search" />
-      <Button layoutX="450.0" layoutY="16.0" mnemonicParsing="false" text="Return to main page" />
+      <DatePicker layoutX="89.0" layoutY="106.0" />
+      <DatePicker layoutX="89.0" layoutY="152.0" />
+      <Text layoutX="14.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Earliest Date:" />
+      <Text layoutX="14.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latest Date:" />
+      <Text layoutX="14.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tage Value:" />
+      <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name:" />
+      <TextField layoutX="84.0" layoutY="315.0" />
+      <Button layoutX="81.0" layoutY="360.0" mnemonicParsing="false" text="Search" />
+      <Button layoutX="531.0" layoutY="13.0" mnemonicParsing="false" text="logout" />
+      <ChoiceBox layoutX="84.0" layoutY="230.0" prefWidth="150.0" />
+      <TextField layoutX="119.0" layoutY="277.0" />
+      <Text layoutX="16.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Tag Name:" />
+      <AnchorPane layoutX="288.0" layoutY="62.0" prefHeight="306.0" prefWidth="290.0">
+         <children>
+            <Text layoutX="70.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="thumbnail images here" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
