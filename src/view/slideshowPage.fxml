@@ -16,6 +16,6 @@
       <Button layoutX="507.0" layoutY="187.0" mnemonicParsing="false" text="&gt;" />
       <Button layoutX="64.0" layoutY="187.0" mnemonicParsing="false" text="&lt;" />
       <Button layoutX="533.0" layoutY="360.0" mnemonicParsing="false" text="logout" />
-      <Button layoutX="238.0" layoutY="323.0" mnemonicParsing="false" text="Return to photo page" />
+      <Button layoutX="238.0" layoutY="323.0" mnemonicParsing="false" text="Return to album page" />
    </children>
 </AnchorPane>

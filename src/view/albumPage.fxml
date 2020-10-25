@@ -9,18 +9,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="12.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name:">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Text>
-      <Button layoutX="184.0" layoutY="367.0" mnemonicParsing="false" text="Rename Caption" />
+      <Button layoutX="182.0" layoutY="407.0" mnemonicParsing="false" text="Rename Caption" />
       <Button layoutX="103.0" layoutY="305.0" mnemonicParsing="false" text="Add Photo" />
       <Button layoutX="194.0" layoutY="305.0" mnemonicParsing="false" text="Delete Photo" />
-      <Button layoutX="184.0" layoutY="339.0" mnemonicParsing="false" text="Add Caption" />
-      <Button layoutX="394.0" layoutY="402.0" mnemonicParsing="false" text="logout" />
+      <Button layoutX="184.0" layoutY="366.0" mnemonicParsing="false" text="Add Caption" />
+      <Button layoutX="267.0" layoutY="548.0" mnemonicParsing="false" text="logout" />
       <AnchorPane layoutX="14.0" layoutY="32.0" prefHeight="229.0" prefWidth="315.0">
          <children>
             <Text layoutX="84.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="thumbnail images and captions">
@@ -31,33 +31,44 @@
             <Text layoutX="74.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
          </children>
       </AnchorPane>
-      <TextField layoutX="15.0" layoutY="339.0" />
-      <TextField layoutX="15.0" layoutY="368.0" />
-      <Button layoutX="142.0" layoutY="402.0" mnemonicParsing="false" text="Back to album" />
+      <TextField layoutX="9.0" layoutY="366.0" />
+      <TextField layoutX="10.0" layoutY="407.0" />
+      <Button layoutX="12.0" layoutY="548.0" mnemonicParsing="false" text="Back to album" />
       <Button layoutX="292.0" layoutY="305.0" mnemonicParsing="false" text="Slideshow" />
-      <Text layoutX="354.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags:" />
-      <Text layoutX="354.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Value:" />
-      <Text layoutX="355.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creat new Tags Name:" />
-      <TextField layoutX="422.0" layoutY="244.0" prefHeight="26.0" prefWidth="98.0" />
-      <Button layoutX="528.0" layoutY="244.0" mnemonicParsing="false" text="Add a tag" />
-      <TextField layoutX="487.0" layoutY="209.0" prefHeight="26.0" prefWidth="98.0" />
-      <TableView layoutX="359.0" layoutY="42.0" prefHeight="129.0" prefWidth="209.0">
+      <Text layoutX="390.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags:" />
+      <Text layoutX="387.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Value:" />
+      <Text layoutX="388.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creat new Tags Name:" />
+      <TextField layoutX="448.0" layoutY="513.0" prefHeight="26.0" prefWidth="98.0" />
+      <Button layoutX="417.0" layoutY="548.0" mnemonicParsing="false" text="Add a tag" />
+      <TextField layoutX="520.0" layoutY="481.0" prefHeight="26.0" prefWidth="98.0" />
+      <TableView layoutX="395.0" layoutY="314.0" prefHeight="129.0" prefWidth="209.0">
         <columns>
           <TableColumn prefWidth="106.39990234375" text="Tags Name" />
           <TableColumn prefWidth="102.4000244140625" text="Tags Value" />
         </columns>
       </TableView>
-      <Text layoutX="353.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Name:" />
-      <ChoiceBox layoutX="424.0" layoutY="178.0" prefWidth="150.0" />
-      <Button layoutX="520.0" layoutY="279.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Delete a tag" />
+      <Text layoutX="386.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Name:" />
+      <ChoiceBox layoutX="457.0" layoutY="450.0" prefWidth="150.0" />
+      <Button layoutX="546.0" layoutY="548.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Delete a tag" />
       <Button layoutY="305.0" mnemonicParsing="false" text="Diplay Photo" />
-      <Button layoutX="494.0" layoutY="368.0" mnemonicParsing="false" text="Move Photo" />
-      <Button layoutX="494.0" layoutY="339.0" mnemonicParsing="false" text="Copy Photo" />
-      <ChoiceBox layoutX="322.0" layoutY="338.0" prefHeight="26.0" prefWidth="161.0" />
-      <ChoiceBox layoutX="322.0" layoutY="367.0" prefHeight="26.0" prefWidth="161.0" />
-      <Text layoutX="56.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.923828125" />
-      <Text layoutX="188.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date-time of capture:" wrappingWidth="164.79999999999995" />
-      <Text layoutX="312.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
-      <Text layoutX="12.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" />
+      <Button layoutX="184.0" layoutY="500.0" mnemonicParsing="false" text="Move Photo" />
+      <Button layoutX="186.0" layoutY="459.0" mnemonicParsing="false" text="Copy Photo" />
+      <ChoiceBox layoutX="9.0" layoutY="458.0" prefHeight="26.0" prefWidth="161.0" />
+      <ChoiceBox layoutX="9.0" layoutY="500.0" prefHeight="26.0" prefWidth="161.0" />
+      <AnchorPane layoutX="342.0" layoutY="29.0" prefHeight="222.0" prefWidth="264.0">
+         <children>
+            <Text layoutX="84.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Show specific photo">
+               <font>
+                  <Font name="Times New Roman" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="74.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="372.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date-time of capture:" wrappingWidth="164.79999999999995" />
+      <Text layoutX="444.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
+      <Text layoutX="371.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" />
+      <Text layoutX="420.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.923828125" />
+      <Button layoutX="159.0" layoutY="548.0" mnemonicParsing="false" text="Search" />
    </children>
 </AnchorPane>

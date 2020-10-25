@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Photos">
          <font>
@@ -25,22 +25,31 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Text>
-      <DatePicker layoutX="89.0" layoutY="106.0" />
-      <DatePicker layoutX="89.0" layoutY="152.0" />
-      <Text layoutX="14.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Earliest Date:" />
-      <Text layoutX="14.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latest Date:" />
-      <Text layoutX="14.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tage Value:" />
-      <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name:" />
-      <TextField layoutX="84.0" layoutY="315.0" />
-      <Button layoutX="81.0" layoutY="360.0" mnemonicParsing="false" text="Search" />
+      <DatePicker layoutX="99.0" layoutY="93.0" />
+      <DatePicker layoutX="99.0" layoutY="130.0" />
+      <Text layoutX="15.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Earliest Date:" />
+      <Text layoutX="29.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latest Date:" />
+      <Text layoutX="15.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value1:" />
+      <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name1:" />
+      <TextField layoutX="89.0" layoutY="261.0" />
       <Button layoutX="531.0" layoutY="13.0" mnemonicParsing="false" text="logout" />
-      <ChoiceBox layoutX="84.0" layoutY="230.0" prefWidth="150.0" />
-      <TextField layoutX="119.0" layoutY="277.0" />
-      <Text layoutX="16.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Tag Name:" />
-      <AnchorPane layoutX="288.0" layoutY="62.0" prefHeight="306.0" prefWidth="290.0">
+      <ChoiceBox layoutX="89.0" layoutY="229.0" prefWidth="150.0" />
+      <AnchorPane layoutX="293.0" layoutY="56.0" prefHeight="250.0" prefWidth="290.0">
          <children>
             <Text layoutX="70.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="thumbnail images here" />
          </children>
       </AnchorPane>
+      <Text layoutX="8.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value2:" />
+      <Text layoutX="10.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name2:" />
+      <TextField layoutX="89.0" layoutY="363.0" />
+      <ChoiceBox layoutX="86.0" layoutY="331.0" prefWidth="150.0" />
+      <Button layoutX="345.0" layoutY="356.0" mnemonicParsing="false" text="Create a new album from search result" />
+      <TextField layoutX="345.0" layoutY="318.0" prefHeight="26.0" prefWidth="238.0" />
+      <Button layoutX="177.0" layoutY="168.0" mnemonicParsing="false" text="Search by Date" />
+      <Button layoutX="97.0" layoutY="293.0" mnemonicParsing="false" text="AND" />
+      <Button layoutX="175.0" layoutY="293.0" mnemonicParsing="false" text="OR" />
+      <Button layoutX="243.0" layoutY="331.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="182.0" layoutY="395.0" mnemonicParsing="false" text="Search by tags" />
+      <Button layoutX="420.0" layoutY="395.0" mnemonicParsing="false" text="Return to album list page" />
    </children>
 </AnchorPane>
