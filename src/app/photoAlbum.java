@@ -18,7 +18,7 @@ public class photoAlbum extends Application {
         Scene scene = new Scene(secondLayout);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Login Page");
+        // primaryStage.setTitle("Login Page");
         primaryStage.show();
 
     }
