@@ -1,8 +1,8 @@
 package model;
 
 public abstract class Account{
-    public String username;
-    public String password;
+    protected String username;
+    protected String password;
 
     public String getUsername() {
         return this.username;
