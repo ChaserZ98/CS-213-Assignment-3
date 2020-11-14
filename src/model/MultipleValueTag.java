@@ -12,9 +12,16 @@ public class MultipleValueTag extends Tag{
         }
     }
 
-    public MultipleValueTag(String tagName){
+    public MultipleValueTag(String tagName, String tagValue){
         this.tagName = tagName;
         tagValues = new ArrayList<>();
+        if(tagValue.length() != 0){
+            tagValues.add(tagValue);
+        }
+    }
+
+    public MultipleValueTag(String tagName){
+        this(tagName, "");
     }
 
     public void addTagValue(String tagValue){
@@ -29,8 +36,12 @@ public class MultipleValueTag extends Tag{
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for(String tagValue : this.tagValues){
+        for(int i = 0; i < this.tagValues.size(); i++){
+            String tagValue = this.tagValues.get(i);
             result.append("(").append(this.tagName).append(", ").append(tagValue).append(")");
+            if(i != this.tagValues.size() - 1){
+                result.append(", ");
+            }
         }
         return result.toString();
     }
