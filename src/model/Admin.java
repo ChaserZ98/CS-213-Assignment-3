@@ -24,11 +24,11 @@ public class Admin extends Account{
         }
     }
 
-    private ArrayList<User> getUserList(){
+    public ArrayList<User> getUserList(){
         return userList;
     }
 
-    private void createNewUser(String username, String password) throws RepeatedUserException {
+    public void createNewUser(String username, String password) throws RepeatedUserException {
         if(username.equals("admin")){
             throw new RepeatedUserException("The username \"" + username + "\" already exists.");
         }
@@ -41,7 +41,7 @@ public class Admin extends Account{
         }
     }
 
-    private void deleteUser(String username) throws UserNotExistedException{
+    public void deleteUser(String username) throws UserNotExistedException{
         User targetUser = new User(username);
         if(this.userList.contains(targetUser)){
             userList.remove(targetUser);
