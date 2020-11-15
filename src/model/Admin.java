@@ -39,10 +39,14 @@ public class Admin extends Account{
         }
     }
 
-    public static Admin readData(){
+    public static Admin readData() throws FileNotFoundException {
         ObjectInputStream ois;
         Admin admin;
         String address = storeDir + File.separator + storeFile;
+        File file = new File(address);
+        if(!file.exists()){
+            throw new FileNotFoundException("Cannot find file " + file.getAbsolutePath());
+        }
         try{
             ois = new ObjectInputStream(new FileInputStream(address));
             admin = (Admin)ois.readObject();
@@ -72,11 +76,11 @@ public class Admin extends Account{
 
     public void createNewUser(String username, String password) throws RepeatedUserException{
         if(username.equals("admin")){
-            throw new RepeatedUserException("The username \"" + username + "\" already exists.");
+            throw new RepeatedUserException("The username " + username + " already exists.");
         }
         User newUser = new User(username, password);
         if(this.userList.contains(newUser)){
-            throw new RepeatedUserException("The username \"" + username + "\" already exists.");
+            throw new RepeatedUserException("The username " + username + " already exists.");
         }
         else{
             this.userList.add(newUser);
@@ -93,7 +97,7 @@ public class Admin extends Account{
             }
         }
         else{
-            throw new UserNotExistedException("The user \"" + username + "\" doesn't exist.");
+            throw new UserNotExistedException("The user " + username + " doesn't exist.");
         }
     }
 }
