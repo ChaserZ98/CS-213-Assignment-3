@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,44 +10,106 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.User;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class LoginPageController {
+public class LoginPageController{
 
-    public TextField username;
-    public TextField password;
-    public Button Login;
+    @FXML TextField usernameTextField;
+    @FXML TextField passwordTextField;
+    @FXML Button loginButton;
 
-    public void LoginClicked(ActionEvent actionEvent) {
+    public void start(Stage mainStage){
 
+    }
 
-        String user = username.getText();
-        String psw = password.getText();
+    public void login(ActionEvent actionEvent) {
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
 
-        if(user.equals("") || user == null || psw.equals("") || psw == null){
+        if(username.equals("")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("No username and password");
-            alert.setContentText("Must input user name and password");
-            alert.show();
+            alert.setHeaderText("Empty Username!");
+            alert.setContentText("Username cannot be empty!");
+            alert.showAndWait();
             return;
         }
 
-        if(user.equalsIgnoreCase("admin") && psw.equalsIgnoreCase("admin")) {
-            try {
-                Stage stage = new Stage();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/view/adminPage.fxml"));
-                AnchorPane rootLayout = (AnchorPane) loader.load();
-                adminPageController AdminController = loader.getController();
+        if(username.equals("admin")) {
+            if(password.equals("admin")){
+                try{
+                    Stage primaryStage = (Stage)loginButton.getScene().getWindow();
 
-                Scene scene = new Scene(rootLayout);
-                stage.setScene(scene);
-                ((Node) actionEvent.getSource()).getScene().getWindow().hide();
-                // stage.setTitle("admin page");
-                stage.show();
-            } catch (IOException m) {
-                m.printStackTrace();
+                    String fxmlPath = "adminPage.fxml";
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/view/" + fxmlPath));
+                    AnchorPane adminPage = (AnchorPane) loader.load();
+                    AdminPageController adminPageController = loader.getController();
+                    adminPageController.start(primaryStage);
+
+                    Scene scene = new Scene(adminPage);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle(fxmlPath);
+//                    primaryStage.show();
+                }
+                catch(Exception e){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("Error When Loading The Admin Page");
+                    alert.setContentText("Cannot load the admin page!");
+                    alert.showAndWait();
+                }
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Password Incorrect!");
+                alert.showAndWait();
+            }
+        }
+        else{
+            User user;
+            try{
+                user = User.readData(username);
+            }
+            catch(FileNotFoundException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Username Does Not Exist!");
+                alert.showAndWait();
+                return;
+            }
+            catch(Exception e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Deserialization Error!");
+                alert.showAndWait();
+                return;
+            }
+            if(password.equals(user.getPassword())){
+                try{
+                    Stage primaryStage = (Stage)loginButton.getScene().getWindow();
+                    String fxmlPath = "albumListPage.fxml";
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/view/" + fxmlPath));
+                    AnchorPane adminPage = (AnchorPane) loader.load();
+                    AdminPageController adminPageController = loader.getController();
+
+                    Scene scene = new Scene(adminPage);
+                    primaryStage.setScene(scene);
+                    primaryStage.setTitle(fxmlPath);
+                    adminPageController.start(primaryStage);
+
+                }
+                catch(Exception e){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("Error When Loading The Admin Page");
+                    alert.setContentText("Cannot load the admin page!");
+                    alert.showAndWait();
+                }
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Password Incorrect!");
+                alert.showAndWait();
             }
         }
     }
