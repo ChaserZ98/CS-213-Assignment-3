@@ -1,13 +1,13 @@
 package model;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class Album{
+public class Album implements Serializable {
     String name;
     ArrayList<Photo> photoList;
 
@@ -90,5 +90,10 @@ public class Album{
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
