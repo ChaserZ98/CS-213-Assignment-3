@@ -3,7 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
-public class slideshowPageController {
+public class SlideshowPageController {
     public Button nextSlide;
     public Button previousSlide;
     public Button Logout;

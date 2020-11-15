@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class searchPageController {
+public class SearchPageController {
     public TextField tagValue01;
     public Button Logout;
     public TextField tagValue02;

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class albumListPageController {
+public class AlbumListPageController {
 
     public TextField newName;
     public Button addAlbum;

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class albumPageController {
+public class AlbumPageController {
 
     public Button renameCaption;
     public Button addPhoto;
