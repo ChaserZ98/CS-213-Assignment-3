@@ -11,7 +11,7 @@ public class User extends Account{
     //A user's information
     private ArrayList<Album> albumList = new ArrayList<>();
 
-    public static final String storeDir = "user";
+    public static final String storeDir = "local/user";
 
     private static class RepeatedAlbumException extends RuntimeException {
         public RepeatedAlbumException(String s) {
@@ -104,7 +104,12 @@ public class User extends Account{
 
     public void renameAlbum(Album album, String name){
         if(this.albumList.contains(album)){
-            album.setName(name);
+            if(this.albumList.contains(new Album(name))){
+                throw new RepeatedAlbumException("The album " + name + " is already existed.");
+            }
+            else{
+                album.setName(name);
+            }
         }
         else{
             throw new AlbumNotExistedException("The album " + album.name + " is not existed.");
