@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AlbumListPageController {
 
@@ -14,6 +15,10 @@ public class AlbumListPageController {
     public Button openAlbum;
     public Button Logout;
     public Button goToSearchPage;
+
+    public void start(Stage mainStage){
+
+    }
 
     public void addAlbumClicked(ActionEvent actionEvent) {
     }
