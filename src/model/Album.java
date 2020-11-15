@@ -2,7 +2,9 @@ package model;
 
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -28,8 +30,57 @@ public class Album implements Serializable {
         photoList = new ArrayList<>();
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void setName(String name){
         this.name = name;
+    }
+
+    public int getNumberOfPhotos(){
+        return this.photoList.size();
+    }
+
+    public Date getEarliestDate(){
+        if(this.photoList.size() == 0){
+            return null;
+        }
+        else{
+            Date earliestDate = this.photoList.get(0).date;
+            for(Photo photo : this.photoList){
+                if(photo.date.getTime() < earliestDate.getTime()){
+                    earliestDate = photo.date;
+                }
+            }
+            return earliestDate;
+        }
+    }
+
+    public Date getLatestDate(){
+        if(this.photoList.size() == 0){
+            return null;
+        }
+        else{
+            Date latestDate = this.photoList.get(0).date;
+            for(Photo photo : this.photoList){
+                if(photo.date.getTime() > latestDate.getTime()){
+                    latestDate = photo.date;
+                }
+            }
+            return latestDate;
+        }
+    }
+
+    public String[] getDateRange(){
+        return getDateRange(new SimpleDateFormat("yyyy-MM-dd"));
+    }
+
+    public String[] getDateRange(DateFormat dateFormat){
+        String[] result = new String[2];
+        result[0] = dateFormat.format(getEarliestDate());
+        result[1] = dateFormat.format(getLatestDate());
+        return result;
     }
 
     public void addPhoto(Photo photo){
