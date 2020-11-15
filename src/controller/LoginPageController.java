@@ -29,7 +29,7 @@ public class LoginPageController{
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        if(username.equals("")){
+        if(username.length() == 0){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Empty Username!");
             alert.setContentText("Username cannot be empty!");
@@ -54,7 +54,7 @@ public class LoginPageController{
                     primaryStage.setTitle(fxmlPath);
 //                    primaryStage.show();
                 }
-                catch(Exception e){
+                catch(IOException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Error When Loading The Admin Page");
                     alert.setContentText("Cannot load the admin page!");
@@ -90,19 +90,18 @@ public class LoginPageController{
                     String fxmlPath = "albumListPage.fxml";
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/view/" + fxmlPath));
-                    AnchorPane adminPage = (AnchorPane) loader.load();
-                    AdminPageController adminPageController = loader.getController();
+                    AnchorPane albumListPage = (AnchorPane) loader.load();
+                    AlbumListPageController albumListPageController = loader.getController();
+                    albumListPageController.start(primaryStage);
 
-                    Scene scene = new Scene(adminPage);
+                    Scene scene = new Scene(albumListPage);
                     primaryStage.setScene(scene);
                     primaryStage.setTitle(fxmlPath);
-                    adminPageController.start(primaryStage);
-
                 }
                 catch(Exception e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Error When Loading The Admin Page");
-                    alert.setContentText("Cannot load the admin page!");
+                    alert.setHeaderText("Error When Loading The Album List Page");
+                    alert.setContentText("Cannot load the album list page!");
                     alert.showAndWait();
                 }
             }
