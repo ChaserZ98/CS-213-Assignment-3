@@ -1,15 +1,17 @@
 package model;
 
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class User extends Account {
+public class User extends Account{
 
     //A user's information
-    ArrayList<Album> albumList = new ArrayList<>();
+    private ArrayList<Album> albumList = new ArrayList<>();
+
+    public static final String storeDir = "user";
 
     private static class RepeatedAlbumException extends RuntimeException {
         public RepeatedAlbumException(String s) {
@@ -23,6 +25,18 @@ public class User extends Account {
         }
     }
 
+    private static class SerializationException extends RuntimeException{
+        public SerializationException(String s){
+            super(s);
+        }
+    }
+
+    private static class DeserializationException extends RuntimeException{
+        public DeserializationException(String s){
+            super(s);
+        }
+    }
+
     public User(String username, String password){
         this.username = username;
         this.password = password;
@@ -30,6 +44,37 @@ public class User extends Account {
 
     public User(String username){
         this(username, "");
+    }
+
+    public static User readData(String username) throws FileNotFoundException {
+        ObjectInputStream ois;
+        User user;
+        String address = storeDir + File.separator + username + ".dat";
+        File file = new File(address);
+        if(!file.exists()){
+            throw new FileNotFoundException("Cannot find file " + file.getAbsolutePath());
+        }
+        try{
+            ois = new ObjectInputStream(new FileInputStream(address));
+            user = (User)ois.readObject();
+        }
+        catch (Exception e){
+            throw new DeserializationException("Cannot deserialize " + address + ".");
+        }
+        return user;
+    }
+
+    public static boolean writeData(User user){
+        ObjectOutputStream oos;
+        String address = storeDir + File.separator + user.username + ".dat";
+        try{
+            oos = new ObjectOutputStream(new FileOutputStream(address));
+            oos.writeObject(user);
+            return true;
+        }
+        catch(Exception e){
+            throw new SerializationException("Cannot serialize the User instance " + user.username + ".");
+        }
     }
 
     public ArrayList<Album> getAlbumList(){
@@ -151,5 +196,10 @@ public class User extends Account {
     @Override
     public int hashCode() {
         return Objects.hash(username, password, albumList);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.username + ", " + this.password +")";
     }
 }
