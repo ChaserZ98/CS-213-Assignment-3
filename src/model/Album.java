@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-public class Album implements Serializable {
+public class Album implements Serializable, Comparable<Album>{
     String name;
     ArrayList<Photo> photoList;
 
@@ -146,5 +146,10 @@ public class Album implements Serializable {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    @Override
+    public int compareTo(Album newAlbum){
+        return this.name.compareTo(newAlbum.getName());
     }
 }
