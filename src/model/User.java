@@ -49,19 +49,20 @@ public class User extends Account{
     public static User readData(String username) throws FileNotFoundException {
         ObjectInputStream ois;
         User user;
-        String address = storeDir + File.separator + username + ".dat";
-        File file = new File(address);
-        if(!file.exists()){
-            throw new FileNotFoundException("Cannot find file " + file.getAbsolutePath());
+        File userDir = new File(storeDir);
+        for(File userFile : Objects.requireNonNull(userDir.listFiles())){
+            if(userFile.getName().equals(username + ".dat")){
+                try{
+                    ois = new ObjectInputStream(new FileInputStream(userFile.getAbsolutePath()));
+                    user = (User)ois.readObject();
+                    return user;
+                }
+                catch (Exception e){
+                    throw new DeserializationException("Cannot deserialize " + userFile.getAbsolutePath() + ".");
+                }
+            }
         }
-        try{
-            ois = new ObjectInputStream(new FileInputStream(address));
-            user = (User)ois.readObject();
-        }
-        catch (Exception e){
-            throw new DeserializationException("Cannot deserialize " + address + ".");
-        }
-        return user;
+        throw new FileNotFoundException();
     }
 
     public static boolean writeData(User user){
