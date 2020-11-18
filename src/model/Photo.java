@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.image.Image;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -16,6 +18,13 @@ public class Photo implements Serializable {
     String caption;
     Date date;
     ArrayList<Tag> tagList;
+
+    //sara add
+    transient Image image;
+    public Image getImage() {
+        return image;
+    }   //sara add
+
 
     private static class RepeatedTagException extends RuntimeException {
         public RepeatedTagException(String s) {
