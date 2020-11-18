@@ -7,13 +7,16 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.User;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginPageController{
 
@@ -22,7 +25,7 @@ public class LoginPageController{
     @FXML Button loginButton;
 
     public void start(Stage mainStage){
-
+        mainStage.setOnCloseRequest(this::close);
     }
 
     public void login(ActionEvent actionEvent) {
@@ -117,6 +120,16 @@ public class LoginPageController{
                 alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                 alert.showAndWait();
             }
+        }
+    }
+    public void close(WindowEvent windowEvent){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Are you sure you want to exit the program?");
+        alert.initOwner((Stage)windowEvent.getSource());
+        Optional<ButtonType> option = alert.showAndWait();
+        if(! (option.get() == ButtonType.YES)) {
+            windowEvent.consume();
         }
     }
 }

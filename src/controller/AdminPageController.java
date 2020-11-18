@@ -186,9 +186,19 @@ public class AdminPageController {
     }
 
     public void close(WindowEvent windowEvent){
-        Admin.writeData(admin);
-        for(User user : admin.getUserList()){
-            User.writeData(user);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Are you sure you want to exit the program?");
+        alert.initOwner((Stage)windowEvent.getSource());
+        Optional<ButtonType> option =  alert.showAndWait();
+        if(option.get() == ButtonType.YES) {
+            Admin.writeData(admin);
+            for(User user : admin.getUserList()){
+                User.writeData(user);
+            }
+        }
+        else{
+            windowEvent.consume();
         }
     }
 }
