@@ -18,6 +18,13 @@ import model.User;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
+/**
+ * Control the AdminPage
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
 
 public class AdminPageController {
 

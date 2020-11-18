@@ -18,6 +18,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Control the LoginPage
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
+
 public class LoginPageController{
 
     @FXML TextField usernameTextField;

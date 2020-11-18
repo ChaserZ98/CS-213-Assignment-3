@@ -20,6 +20,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
 
+/**
+ * Control the Page for Slideshow
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
 public class SlideshowPageController {
     public Button nextSlide;
     public Button previousSlide;
@@ -30,6 +37,11 @@ public class SlideshowPageController {
     int currentIndex = 0;
     ArrayList<Photo> photos;
 
+
+    /**
+     * Start method
+     * @param album the album to store photos
+     */
     public void start(Album album){
 
         photos = album.getPhotos();
@@ -42,6 +54,11 @@ public class SlideshowPageController {
 
         borderPandID.setCenter(image);
     }
+
+    /**
+     *
+     * @param actionEvent
+     */
     public void nextSlideClicked(ActionEvent actionEvent) {
         currentIndex++;
         if(currentIndex >= photos.size()){

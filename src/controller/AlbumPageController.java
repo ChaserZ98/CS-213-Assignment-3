@@ -6,6 +6,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
+/**
+ * Control the AlbumPage
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
+
 
 public class AlbumPageController {
 
