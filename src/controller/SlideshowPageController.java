@@ -36,6 +36,7 @@ public class SlideshowPageController {
         image.setFitWidth(200);
         image.setFitHeight(200);
 
+
         borderPandID.setCenter(image);
     }
     public void nextSlideClicked(ActionEvent actionEvent) {
