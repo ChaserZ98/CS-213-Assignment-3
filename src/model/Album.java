@@ -77,9 +77,13 @@ public class Album implements Serializable, Comparable<Album>{
     }
 
     public String[] getDateRange(DateFormat dateFormat){
+        if(this.photoList.size() == 0){
+            return null;
+        }
         String[] result = new String[2];
         result[0] = dateFormat.format(getEarliestDate());
         result[1] = dateFormat.format(getLatestDate());
+
         return result;
     }
 
