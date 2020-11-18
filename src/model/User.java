@@ -58,6 +58,7 @@ public class User extends Account{
                 try{
                     ois = new ObjectInputStream(new FileInputStream(userFile.getAbsolutePath()));
                     user = (User)ois.readObject();
+                    ois.close();
                     return user;
                 }
                 catch (Exception e){
@@ -74,6 +75,7 @@ public class User extends Account{
         try{
             oos = new ObjectOutputStream(new FileOutputStream(address));
             oos.writeObject(user);
+            oos.close();
             return true;
         }
         catch(Exception e){

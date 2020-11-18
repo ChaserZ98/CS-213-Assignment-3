@@ -50,6 +50,7 @@ public class Admin extends Account{
         try{
             ois = new ObjectInputStream(new FileInputStream(address));
             admin = (Admin)ois.readObject();
+            ois.close();
         }
         catch(Exception e){
             throw new DeserializationException("Cannot deserialize " + address + ".");
@@ -63,6 +64,7 @@ public class Admin extends Account{
         try{
             oos = new ObjectOutputStream(new FileOutputStream(address));
             oos.writeObject(admin);
+            oos.close();
             return true;
         }
         catch(Exception e){
@@ -99,7 +101,7 @@ public class Admin extends Account{
             userList.remove(targetUser);
             File file = new File("local/user/" + targetUser.getUsername() + ".dat");
             if(file.exists()){
-                file.delete();
+                boolean isDelete = file.delete();
             }
         }
         else{
