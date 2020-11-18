@@ -14,13 +14,13 @@
       <Text layoutX="443.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail of album:" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 14pt" />
 
       <Text layoutX="395.0" layoutY="100.0" wrappingWidth="130" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 12pt" />
-      <Text fx:id="albumName" layoutX="530.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="129.4521484375" />
+      <Text fx:id="albumName" layoutX="530.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 
       <Text layoutX="395.0" layoutY="150.0" wrappingWidth="130" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of photos:" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 12pt"/>
-      <Text fx:id="numberOfPhotos" layoutX="530.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="129.4521484375" />
+      <Text fx:id="numberOfPhotos" layoutX="530.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 
       <Text layoutX="395.0" layoutY="200.0" wrappingWidth="130" strokeType="OUTSIDE" strokeWidth="0.0" text="Range of dates:" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 12pt" />
-      <Text fx:id="rangeOfDates" layoutX="530.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="86.565673828125" />
+      <Text fx:id="rangeOfDates" layoutX="500.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 
       <Text layoutX="395.0" wrappingWidth="80.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New name:" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 12pt" />
       <TextField fx:id="renameTextField" prefWidth="100.0" layoutX="480.0" layoutY="235.0" alignment="CENTER"  />
