@@ -75,7 +75,7 @@ public class AlbumListPageController {
             numberOfPhotos.setText(String.valueOf(selectedAlbum.getNumberOfPhotos()));
             String[] dateRange = selectedAlbum.getDateRange();
             if (dateRange != null){
-                rangeOfDates.setText(dateRange[0] + "-" + dateRange[1]);
+                rangeOfDates.setText(dateRange[0] + " - " + dateRange[1]);
             }
             else{
                 rangeOfDates.setText("");
