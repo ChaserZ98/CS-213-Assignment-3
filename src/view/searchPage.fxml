@@ -31,8 +31,8 @@
       <Text layoutX="29.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Latest Date:" />
       <Text layoutX="15.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value1:" />
       <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name1:" />
-      <TextField layoutX="89.0" layoutY="261.0" />
-      <Button layoutX="531.0" layoutY="13.0" mnemonicParsing="false" text="logout" />
+      <TextField fx:id="tagValue01" layoutX="89.0" layoutY="261.0" />
+      <Button fx:id="Logout" layoutX="531.0" layoutY="13.0" mnemonicParsing="false" onAction="#LogoutClicked" text="logout" />
       <ChoiceBox layoutX="89.0" layoutY="229.0" prefWidth="150.0" />
       <AnchorPane layoutX="293.0" layoutY="56.0" prefHeight="250.0" prefWidth="290.0">
          <children>
@@ -41,15 +41,15 @@
       </AnchorPane>
       <Text layoutX="8.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value2:" />
       <Text layoutX="10.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name2:" />
-      <TextField layoutX="89.0" layoutY="363.0" />
+      <TextField fx:id="tagValue02" layoutX="89.0" layoutY="363.0" />
       <ChoiceBox layoutX="86.0" layoutY="331.0" prefWidth="150.0" />
-      <Button layoutX="345.0" layoutY="356.0" mnemonicParsing="false" text="Create a new album from search result" />
+      <Button fx:id="CreateSearchedAlbum" layoutX="345.0" layoutY="356.0" mnemonicParsing="false" onAction="#CreateSearchedAlbumClicked" text="Create a new album from search result" />
       <TextField layoutX="345.0" layoutY="318.0" prefHeight="26.0" prefWidth="238.0" />
-      <Button layoutX="177.0" layoutY="168.0" mnemonicParsing="false" text="Search by Date" />
-      <Button layoutX="97.0" layoutY="293.0" mnemonicParsing="false" text="AND" />
-      <Button layoutX="175.0" layoutY="293.0" mnemonicParsing="false" text="OR" />
+      <Button fx:id="searchByDate" layoutX="177.0" layoutY="168.0" mnemonicParsing="false" onAction="#searchByDateClicked" text="Search by Date" />
+      <Button fx:id="andID" layoutX="97.0" layoutY="293.0" mnemonicParsing="false" onAction="#andClicked" text="AND" />
+      <Button fx:id="orID" layoutX="175.0" layoutY="293.0" mnemonicParsing="false" onAction="#orClicked" text="OR" />
       <Button layoutX="243.0" layoutY="331.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="182.0" layoutY="395.0" mnemonicParsing="false" text="Search by tags" />
-      <Button layoutX="420.0" layoutY="395.0" mnemonicParsing="false" text="Return to album list page" />
+      <Button fx:id="searchByTag" layoutX="182.0" layoutY="395.0" mnemonicParsing="false" onAction="#searchByTagClicked" text="Search by tags" />
+      <Button fx:id="returnToAlbumList" layoutX="420.0" layoutY="395.0" mnemonicParsing="false" onAction="#returnToAlbumListClicked" text="Return to album list page" />
    </children>
 </AnchorPane>

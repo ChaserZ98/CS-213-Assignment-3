@@ -36,7 +36,6 @@ public class LoginPageController{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Empty Username!");
             alert.setContentText("Username cannot be empty!");
-            alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
             alert.showAndWait();
             return;
         }
@@ -61,15 +60,12 @@ public class LoginPageController{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Error When Loading The Admin Page");
                     alert.setContentText("Cannot load the admin page!");
-                    alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                     alert.showAndWait();
                 }
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Password Incorrect!");
-
-                alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                 alert.showAndWait();
             }
         }
@@ -81,14 +77,12 @@ public class LoginPageController{
             catch(FileNotFoundException e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Username Does Not Exist!");
-                alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                 alert.showAndWait();
                 return;
             }
             catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Deserialization Error!");
-                alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                 alert.showAndWait();
                 return;
             }
@@ -100,24 +94,22 @@ public class LoginPageController{
                     loader.setLocation(getClass().getResource("/view/" + fxmlPath));
                     AnchorPane albumListPage = (AnchorPane) loader.load();
                     AlbumListPageController albumListPageController = loader.getController();
-                    albumListPageController.start(primaryStage, user);
+                    albumListPageController.start(primaryStage);
 
                     Scene scene = new Scene(albumListPage);
                     primaryStage.setScene(scene);
                     primaryStage.setTitle(fxmlPath);
                 }
-                catch(IOException e){
+                catch(Exception e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Error When Loading The Album List Page");
                     alert.setContentText("Cannot load the album list page!");
-                    alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                     alert.showAndWait();
                 }
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Password Incorrect!");
-                alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                 alert.showAndWait();
             }
         }

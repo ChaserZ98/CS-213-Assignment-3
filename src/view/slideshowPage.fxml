@@ -12,10 +12,10 @@
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="109.0" layoutY="76.0" prefHeight="247.0" prefWidth="382.0" />
-      <Button layoutX="507.0" layoutY="187.0" mnemonicParsing="false" text="&gt;" />
-      <Button layoutX="64.0" layoutY="187.0" mnemonicParsing="false" text="&lt;" />
-      <Button layoutX="533.0" layoutY="360.0" mnemonicParsing="false" text="logout" />
-      <Button layoutX="238.0" layoutY="323.0" mnemonicParsing="false" text="Return to album page" />
+      <AnchorPane fx:id="anchorPaneID" layoutX="109.0" layoutY="76.0" prefHeight="247.0" prefWidth="382.0" />
+      <Button fx:id="nextSlide" layoutX="507.0" layoutY="187.0" mnemonicParsing="false" onAction="#nextSlideClicked" text="&gt;" />
+      <Button fx:id="previousSlide" layoutX="64.0" layoutY="187.0" mnemonicParsing="false" onAction="#previousSlideClicked" text="&lt;" />
+      <Button fx:id="Logout" layoutX="533.0" layoutY="360.0" mnemonicParsing="false" onAction="#LogoutClicked" text="logout" />
+      <Button fx:id="returnToAlbumPage" layoutX="238.0" layoutY="323.0" mnemonicParsing="false" onAction="#returnToAlbumPageClicked" text="Return to album page" />
    </children>
 </AnchorPane>
