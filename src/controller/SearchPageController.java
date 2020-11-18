@@ -3,6 +3,8 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.User;
 
 public class SearchPageController {
     public TextField tagValue01;
@@ -15,6 +17,12 @@ public class SearchPageController {
     public Button deleteID;
     public Button searchByTag;
     public Button returnToAlbumList;
+
+    private User user;
+
+    public void start(Stage mainStage, User loginUser){
+        user = loginUser;
+    }
 
     public void LogoutClicked(ActionEvent actionEvent) {
     }
