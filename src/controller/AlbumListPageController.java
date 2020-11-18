@@ -21,6 +21,14 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Optional;
 
+/**
+ * Control the AlbumListPage
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
+
 public class AlbumListPageController {
 
     @FXML ListView<Album> listView;

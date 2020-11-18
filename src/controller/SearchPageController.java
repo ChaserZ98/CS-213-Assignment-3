@@ -5,7 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
-
+/**
+ * Control the SearchPage
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ *
+ *
+ */
 public class SearchPageController {
     public TextField tagValue01;
     public Button Logout;
