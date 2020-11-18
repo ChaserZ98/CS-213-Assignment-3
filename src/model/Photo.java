@@ -1,10 +1,12 @@
 package model;
 
 import javafx.scene.image.Image;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,20 +19,21 @@ public class Photo implements Serializable {
     Date date;
     ArrayList<Tag> tagList;
 
-    public static class RepeatedTagException extends RuntimeException {
+    //sara add
+    transient Image image;
+    public Image getImage() {
+        return image;
+    }   //sara add
+
+
+    private static class RepeatedTagException extends RuntimeException {
         public RepeatedTagException(String s) {
             super(s);
         }
     }
 
-    public static class TagTypeUnmatchedException extends RuntimeException{
+    private static class TagTypeUnmatchedException extends RuntimeException{
         public TagTypeUnmatchedException(String s) {
-            super(s);
-        }
-    }
-
-    public static class ImageErrorException extends RuntimeException{
-        public ImageErrorException(String s) {
             super(s);
         }
     }
@@ -44,36 +47,11 @@ public class Photo implements Serializable {
             cal.setTimeInMillis(file.lastModified());
             this.date = cal.getTime();
             this.tagList = new ArrayList<>();
+//            System.out.println(file.getAbsolutePath());
         }
         else{
             throw new FileNotFoundException("The file \"" + address + "\" doesn't exist.");
         }
-    }
-
-    public Image getImage() throws FileNotFoundException {
-        File file = new File(this.address);
-        Image image;
-        if(file.exists()){
-            if(!file.isFile()){
-                throw new FileNotFoundException(file.getAbsolutePath() + " is not an image file.");
-            }
-            else{
-                try{
-                    image = new Image(file.toURI().toString());
-                    return image;
-                }
-                catch(Exception e){
-                    throw new ImageErrorException("Error when loading " + file.getAbsolutePath() + " as an image");
-                }
-            }
-        }
-        else{
-            throw new FileNotFoundException(file.getAbsolutePath() + " does not exist.");
-        }
-    }
-
-    public String getAddress(){
-        return this.address;
     }
 
     public String getCaption(){
@@ -90,10 +68,6 @@ public class Photo implements Serializable {
 
     public String getDate(DateFormat dateFormat){
         return dateFormat.format(this.date.getTime());
-    }
-
-    public ArrayList<Tag> getTagList(){
-        return this.tagList;
     }
 
     public void addUniqueValueTag(String tagName, String tagValue){
