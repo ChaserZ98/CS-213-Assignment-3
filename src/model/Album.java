@@ -13,13 +13,13 @@ public class Album implements Serializable, Comparable<Album>{
     String name;
     ArrayList<Photo> photoList;
 
-    private static class PhotoExistedException extends RuntimeException{
+    public static class PhotoExistedException extends RuntimeException{
         public PhotoExistedException(String s) {
             super(s);
         }
     }
 
-    private static class PhotoNotFoundException extends RuntimeException{
+    public static class PhotoNotFoundException extends RuntimeException{
         public PhotoNotFoundException(String s){
             super(s);
         }
@@ -36,6 +36,10 @@ public class Album implements Serializable, Comparable<Album>{
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public ArrayList<Photo> getPhotoList(){
+        return this.photoList;
     }
 
     public int getNumberOfPhotos(){
@@ -155,11 +159,5 @@ public class Album implements Serializable, Comparable<Album>{
     @Override
     public int compareTo(Album newAlbum){
         return this.name.compareTo(newAlbum.getName());
-    }
-
-    //sara add
-    public ArrayList<Photo> getPhotos(){
-
-        return this.photoList;
     }
 }
