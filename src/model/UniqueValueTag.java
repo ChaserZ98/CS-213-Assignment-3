@@ -18,6 +18,10 @@ public class UniqueValueTag extends Tag{
         this.tagValue = tagValue;
     }
 
+    public String getTagValue() {
+        return this.tagValue;
+    }
+
     @Override
     public String toString() {
         return "(" + this.tagName + ", " + this.tagValue + ")";

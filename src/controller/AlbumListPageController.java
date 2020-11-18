@@ -161,8 +161,11 @@ public class AlbumListPageController {
             Optional<ButtonType> option =  alert.showAndWait();
             if(option.get() == ButtonType.YES){
                 try{
-                    user.createAlbum(newAlbumName, null);
+                    Album newAlbum = new Album(newAlbumName);
+                    user.createAlbum(newAlbum, null);
                     obsList.setAll(user.getAlbumList());
+                    int newIndex = obsList.indexOf(newAlbum);
+                    listView.getSelectionModel().select(newIndex);
                 }
                 catch (User.RepeatedAlbumException e){
                     alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
@@ -176,26 +179,37 @@ public class AlbumListPageController {
     }
 
     public void openAlbum(ActionEvent actionEvent) {
-        User.writeData(user);
-        try{
-            Stage primaryStage = (Stage)openAlbumButton.getScene().getWindow();
+        int index = listView.getSelectionModel().getSelectedIndex();
+        if(index >= 0){
+            User.writeData(user);
+            try{
+                Stage primaryStage = (Stage)openAlbumButton.getScene().getWindow();
 
-            String fxmlPath = "albumPage.fxml";
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/" + fxmlPath));
-            AnchorPane adminPage = (AnchorPane) loader.load();
-            AlbumPageController albumPageController = loader.getController();
-            albumPageController.start(primaryStage, user, obsList.get(listView.getSelectionModel().getSelectedIndex()));
+                String fxmlPath = "albumPage.fxml";
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/" + fxmlPath));
+                AnchorPane adminPage = (AnchorPane) loader.load();
+                AlbumPageController albumPageController = loader.getController();
+                albumPageController.start(primaryStage, user, obsList.get(index));
 
-            Scene scene = new Scene(adminPage);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle(fxmlPath);
+                Scene scene = new Scene(adminPage);
+                primaryStage.setScene(scene);
+                primaryStage.setTitle(fxmlPath);
+            }
+            catch(IOException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Error When Loading The Album Page");
+                alert.setContentText("Cannot load the album page!");
+                alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+                alert.showAndWait();
+                e.printStackTrace();
+            }
         }
-        catch(IOException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Error When Loading The Album Page");
-            alert.setContentText("Cannot load the album page!");
-            alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR, "There is no album selected.", ButtonType.OK);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Illegal Manipulation!");
+            alert.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             alert.showAndWait();
         }
     }
