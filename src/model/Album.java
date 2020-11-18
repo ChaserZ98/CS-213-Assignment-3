@@ -38,6 +38,10 @@ public class Album implements Serializable, Comparable<Album>{
         this.name = name;
     }
 
+    public ArrayList<Photo> getPhotoList(){
+        return this.photoList;
+    }
+
     public int getNumberOfPhotos(){
         return this.photoList.size();
     }
@@ -155,11 +159,5 @@ public class Album implements Serializable, Comparable<Album>{
     @Override
     public int compareTo(Album newAlbum){
         return this.name.compareTo(newAlbum.getName());
-    }
-
-    //sara add
-    public ArrayList<Photo> getPhotos(){
-
-        return this.photoList;
     }
 }
