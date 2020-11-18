@@ -1,7 +1,6 @@
 package model;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -13,25 +12,25 @@ public class User extends Account{
 
     public static final String storeDir = "local/user";
 
-    private static class RepeatedAlbumException extends RuntimeException {
+    public static class RepeatedAlbumException extends RuntimeException {
         public RepeatedAlbumException(String s) {
             super(s);
         }
     }
 
-    private static class AlbumNotExistedException extends RuntimeException{
+    public static class AlbumNotExistedException extends RuntimeException{
         public AlbumNotExistedException(String s){
             super(s);
         }
     }
 
-    private static class SerializationException extends RuntimeException{
+    public static class SerializationException extends RuntimeException{
         public SerializationException(String s){
             super(s);
         }
     }
 
-    private static class DeserializationException extends RuntimeException{
+    public static class DeserializationException extends RuntimeException{
         public DeserializationException(String s){
             super(s);
         }
@@ -152,32 +151,15 @@ public class User extends Account{
         sourceAlbum.deletePhoto(photo);
     }
 
-    public ArrayList<Photo> searchPhotoByDate(Album album, Date earliestDate, Date latestDate){
-        return album.getPhotosByDateRange(earliestDate, latestDate);
-    }
-
-    public ArrayList<Photo> searchPhotoByTags(Album album, Tag tag1, Tag tag2, boolean disjunctionFlag){
-        ArrayList<Photo> result = new ArrayList<>();
-        ArrayList<Photo> tag1Photos = album.getPhotosByTag(tag1);
-        ArrayList<Photo> tag2Photos = album.getPhotosByTag(tag2);
-        if(disjunctionFlag){
-            for(Photo photo : tag1Photos){
-                if(photo.hasTag(tag2)){
-                    result.add(photo);
-                }
-            }
-            for(Photo photo : tag2Photos){
-                if(photo.hasTag(tag1) && !result.contains(photo)){
-                    result.add(photo);
-                }
-            }
+    public ArrayList<Photo> searchPhotoByDate(Date earliestDate, Date latestDate){
+        if(this.albumList.size() == 0){
+            return null;
         }
-        else{
-            if(tag1Photos != null){
-                result.addAll(tag1Photos);
-            }
-            if(tag2 != null){
-                for(Photo photo : tag2Photos){
+        ArrayList<Photo> result = new ArrayList<>();
+        for(Album album : this.albumList){
+            ArrayList<Photo> albumResult = album.getPhotosByDateRange(earliestDate, latestDate);
+            if(albumResult != null){
+                for(Photo photo : albumResult){
                     if(!result.contains(photo)){
                         result.add(photo);
                     }
@@ -187,8 +169,52 @@ public class User extends Account{
         return result.size() == 0 ? null : result;
     }
 
-    public ArrayList<Photo> searchPhotoByTag(Album album, Tag tag){
-        return searchPhotoByTags(album, tag, null, false);
+    public ArrayList<Photo> searchPhotoByTags(Tag tag1, Tag tag2, boolean disjunctionFlag){
+        if(this.albumList.size() == 0){
+            return null;
+        }
+        ArrayList<Photo> result = new ArrayList<>();
+        for(Album album : this.albumList){
+            ArrayList<Photo> tag1Photos = album.getPhotosByTag(tag1);
+            ArrayList<Photo> tag2Photos = album.getPhotosByTag(tag2);
+            ArrayList<Photo> albumResult = new ArrayList<>();
+            if(disjunctionFlag){
+                for(Photo photo : tag1Photos){
+                    if(photo.hasTag(tag2)){
+                        albumResult.add(photo);
+                    }
+                }
+                for(Photo photo : tag2Photos){
+                    if(photo.hasTag(tag1) && !result.contains(photo)){
+                        albumResult.add(photo);
+                    }
+                }
+            }
+            else{
+                if(tag1Photos != null){
+                    albumResult.addAll(tag1Photos);
+                }
+                if(tag2 != null){
+                    for(Photo photo : tag2Photos){
+                        if(!albumResult.contains(photo)){
+                            albumResult.add(photo);
+                        }
+                    }
+                }
+            }
+
+            for(Photo photo : albumResult){
+                if(!result.contains(photo)){
+                    result.add(photo);
+                }
+            }
+        }
+
+        return result.size() == 0 ? null : result;
+    }
+
+    public ArrayList<Photo> searchPhotoByTag(Tag tag){
+        return searchPhotoByTags(tag, null, false);
     }
 
     @Override
