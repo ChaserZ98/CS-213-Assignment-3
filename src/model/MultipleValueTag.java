@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MultipleValueTag extends Tag{
+    String tagValue;
     ArrayList<String> tagValues;
 
     private static class RepeatedTagValueException extends RuntimeException{
@@ -28,7 +29,7 @@ public class MultipleValueTag extends Tag{
         return this.tagValues;
     }
 
-    public String getFirstTagValue(){
+    public String getTagValue(){
         if(tagValues.size() == 0){
             return "";
         }
@@ -49,6 +50,9 @@ public class MultipleValueTag extends Tag{
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
+        if(this.tagValues.size() == 0){
+            return "(" + this.getTagName() + ", )";
+        }
         for(int i = 0; i < this.tagValues.size(); i++){
             String tagValue = this.tagValues.get(i);
             result.append("(").append(this.tagName).append(", ").append(tagValue).append(")");
