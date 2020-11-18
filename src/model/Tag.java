@@ -7,4 +7,8 @@ public abstract class Tag implements Serializable {
     public String tagName;
 
     public abstract boolean equals(Object o);
+
+    public String getTagName() {
+        return this.tagName;
+    }
 }
