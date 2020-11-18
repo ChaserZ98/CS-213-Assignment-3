@@ -3,6 +3,9 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.Album;
+import model.User;
 
 public class AlbumPageController {
 
@@ -24,6 +27,13 @@ public class AlbumPageController {
     public Button copyPhoto;
     public Button search;
 
+    private User user;
+    private Album album;
+
+    public void start(Stage mainStage, User loginUser, Album openedAlbum){
+        user = loginUser;
+        album = openedAlbum;
+    }
 
     public void renameCaptionClicked(ActionEvent actionEvent) {
     }
