@@ -84,6 +84,12 @@ public class Admin extends Account{
         }
         else{
             this.userList.add(newUser);
+            try{
+                User.writeData(newUser);
+            }
+            catch(User.SerializationException e){
+                throw new SerializationException(e.getMessage());
+            }
         }
     }
 
