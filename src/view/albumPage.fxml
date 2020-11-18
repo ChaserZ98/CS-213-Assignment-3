@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--Feiyu Zheng-->
+<!--Ying Yu-->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -53,11 +54,6 @@
       <TextField fx:id="newTagNameTextField" layoutX="640.0" layoutY="645.0" prefWidth="130.0" alignment="CENTER" visible="false" />
       <Text fx:id="newTagTypeText" wrappingWidth="130.0" layoutX="505.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Tag Type: " style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" visible="false" />
       <ChoiceBox fx:id="newTagTypeChoiceBox" layoutX="640.0" layoutY="675.0" prefWidth="130.0" visible="false" />
-
-<!--      <Text wrappingWidth="130.0" layoutX="505.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />-->
-<!--      <TextField layoutX="640.0" layoutY="705.0" prefWidth="130.0" text="3" alignment="CENTER"/>-->
-<!--      <Button fx:id="addTagButton" prefWidth="125.0" layoutX="505.0" layoutY="750.0" mnemonicParsing="false" text="Add Tag" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" />-->
-<!--      <Button fx:id="deleteTagButton" prefWidth="125.0" layoutX="640.0" layoutY="750.0" mnemonicParsing="false" text="Delete Tag" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" />-->
 
       <Text fx:id="tagValueText" wrappingWidth="130.0" layoutX="505.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
       <TextField fx:id="tagValueTextField" layoutX="640.0" layoutY="645.0" prefWidth="130.0" alignment="CENTER"/>
