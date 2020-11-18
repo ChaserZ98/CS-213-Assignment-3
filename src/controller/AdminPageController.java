@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.Admin;
@@ -115,9 +114,6 @@ public class AdminPageController {
         if(option.get() == ButtonType.YES){
             try{
                 Admin.writeData(admin);
-                for(User user : admin.getUserList()){
-                    User.writeData(user);
-                }
             }
             catch(Exception e){
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -193,9 +189,6 @@ public class AdminPageController {
         Optional<ButtonType> option =  alert.showAndWait();
         if(option.get() == ButtonType.YES) {
             Admin.writeData(admin);
-            for(User user : admin.getUserList()){
-                User.writeData(user);
-            }
         }
         else{
             windowEvent.consume();
