@@ -100,6 +100,13 @@ public class AdminPageController {
                     alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
                     alert.showAndWait();
                 }
+                catch(Admin.SerializationException e){
+                    alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(e.getMessage());
+                    alert.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+                    alert.showAndWait();
+                }
             }
         }
     }
