@@ -1,6 +1,7 @@
 package model;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -9,6 +10,7 @@ public class User extends Account{
 
     //A user's information
     private ArrayList<Album> albumList = new ArrayList<>();
+    private ArrayList<Tag> createdTags = new ArrayList<>();
 
     public static final String storeDir = "local/user";
 
@@ -39,6 +41,8 @@ public class User extends Account{
     public User(String username, String password){
         this.username = username;
         this.password = password;
+        this.createdTags.add(new UniqueValueTag("location", ""));
+        this.createdTags.add(new MultipleValueTag("person", ""));
     }
 
     public User(String username){
@@ -54,6 +58,7 @@ public class User extends Account{
                 try{
                     ois = new ObjectInputStream(new FileInputStream(userFile.getAbsolutePath()));
                     user = (User)ois.readObject();
+                    ois.close();
                     return user;
                 }
                 catch (Exception e){
@@ -70,6 +75,7 @@ public class User extends Account{
         try{
             oos = new ObjectOutputStream(new FileOutputStream(address));
             oos.writeObject(user);
+            oos.close();
             return true;
         }
         catch(Exception e){
@@ -79,6 +85,10 @@ public class User extends Account{
 
     public ArrayList<Album> getAlbumList(){
         return this.albumList;
+    }
+
+    public ArrayList<Tag> getCreatedTags(){
+        return this.createdTags;
     }
 
     public void createAlbum(String name, ArrayList<Photo> photoList){
