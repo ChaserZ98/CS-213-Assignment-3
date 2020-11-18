@@ -94,7 +94,7 @@ public class LoginPageController{
                     loader.setLocation(getClass().getResource("/view/" + fxmlPath));
                     AnchorPane albumListPage = (AnchorPane) loader.load();
                     AlbumListPageController albumListPageController = loader.getController();
-                    albumListPageController.start(primaryStage);
+                    albumListPageController.start(primaryStage,user);
 
                     Scene scene = new Scene(albumListPage);
                     primaryStage.setScene(scene);
