@@ -91,17 +91,20 @@ public class User extends Account{
         return this.createdTags;
     }
 
-    public void createAlbum(String name, ArrayList<Photo> photoList){
-        Album newAlbum = new Album(name);
-        if(photoList != null){
-            newAlbum.photoList = photoList;
+    public void createAlbum(Album album, ArrayList<Photo> photoList){
+        if (photoList != null){
+            album.photoList = photoList;
         }
-        if(this.albumList.contains(newAlbum)){
+        if(this.albumList.contains(album)){
             throw new RepeatedAlbumException("The album \"" + username + "\" already exists.");
         }
         else{
-            this.albumList.add(newAlbum);
+            this.albumList.add(album);
         }
+    }
+
+    public void createAlbum(String name, ArrayList<Photo> photoList){
+        createAlbum(new Album(name), photoList);
     }
 
     public void createAlbum(String name){
@@ -124,6 +127,14 @@ public class User extends Account{
         else{
             throw new AlbumNotExistedException("The album " + album.name + " is not existed.");
         }
+    }
+
+    public void addPhoto(Album album, Photo photo){
+        album.addPhoto(photo);
+    }
+
+    public void deletePhoto(Album album, Photo photo){
+        album.deletePhoto(photo);
     }
 
     public void captionPhoto(Photo photo, String caption){
