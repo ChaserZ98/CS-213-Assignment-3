@@ -24,6 +24,19 @@ public class MultipleValueTag extends Tag{
         this(tagName, "");
     }
 
+    public ArrayList<String> getTagValues() {
+        return this.tagValues;
+    }
+
+    public String getFirstTagValue(){
+        if(tagValues.size() == 0){
+            return "";
+        }
+        else{
+            return this.tagValues.get(0);
+        }
+    }
+
     public void addTagValue(String tagValue){
         if(this.tagValues.contains(tagValue)){
             throw new RepeatedTagValueException("The tag (" + this.tagName + "," + tagValue + ") already exists.");
