@@ -11,6 +11,7 @@ public class User extends Account{
     //A user's information
     private ArrayList<Album> albumList = new ArrayList<>();
     private ArrayList<Tag> createdTags = new ArrayList<>();
+    private ArrayList<Photo> photos = new ArrayList<>();
 
     public static final String storeDir = "local/user";
 
@@ -91,6 +92,10 @@ public class User extends Account{
         return this.createdTags;
     }
 
+    public ArrayList<Photo> getPhotos() {
+        return this.photos;
+    }
+
     public void createAlbum(Album album, ArrayList<Photo> photoList){
         if (photoList != null){
             album.photoList = photoList;
@@ -130,11 +135,26 @@ public class User extends Account{
     }
 
     public void addPhoto(Album album, Photo photo){
-        album.addPhoto(photo);
+        int index = this.photos.indexOf(photo);
+        if (index < 0) {
+            this.photos.add(photo);
+            index = this.photos.indexOf(photo);
+        }
+        album.addPhoto(this.photos.get(index));
     }
 
     public void deletePhoto(Album album, Photo photo){
         album.deletePhoto(photo);
+        boolean albumContainsPhoto = false;
+        for(Album eachAlbum : this.albumList){
+            if (eachAlbum.photoList.contains(photo)) {
+                albumContainsPhoto = true;
+                break;
+            }
+        }
+        if(!albumContainsPhoto){
+            this.photos.remove(photo);
+        }
     }
 
     public void captionPhoto(Photo photo, String caption){
@@ -156,10 +176,30 @@ public class User extends Account{
         if(tag instanceof MultipleValueTag){
             MultipleValueTag multipleValueTag = (MultipleValueTag) tag;
             photo.deleteMultipleValueTag(multipleValueTag);
+            boolean containTag = false;
+            for(Photo existedPhoto : this.photos){
+                if(existedPhoto.tagList.contains(tag)){
+                    containTag = true;
+                    break;
+                }
+            }
+            if(!containTag && !tag.getTagName().equals("name") && !tag.getTagName().contains("location")){
+                this.createdTags.remove(tag);
+            }
         }
         else if(tag instanceof UniqueValueTag){
             UniqueValueTag uniqueValueTag = (UniqueValueTag) tag;
             photo.deleteUniqueValueTag(uniqueValueTag);
+            boolean containTag = false;
+            for(Photo existedPhoto : this.photos){
+                if(existedPhoto.tagList.contains(tag)){
+                    containTag = true;
+                    break;
+                }
+            }
+            if(!containTag && !tag.getTagName().equals("name") && !tag.getTagName().contains("location")){
+                this.createdTags.remove(tag);
+            }
         }
     }
 
