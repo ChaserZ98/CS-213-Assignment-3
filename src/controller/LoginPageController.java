@@ -53,7 +53,6 @@ public class LoginPageController{
                     Scene scene = new Scene(adminPage);
                     primaryStage.setScene(scene);
                     primaryStage.setTitle(fxmlPath);
-//                    primaryStage.show();
                 }
                 catch(IOException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
