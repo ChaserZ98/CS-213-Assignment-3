@@ -13,13 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.User;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
 
 /**
- * Control the LoginPage
+ * The controller of the login page
  * @author Feiyu Zheng
  * @author Ying Yu
  *
@@ -28,14 +27,31 @@ import java.util.Optional;
 
 public class LoginPageController{
 
+    /**
+     * TextField for user to enter username
+     */
     @FXML TextField usernameTextField;
+    /**
+     * TextField for user to enter password
+     */
     @FXML TextField passwordTextField;
+    /**
+     * Login button
+     */
     @FXML Button loginButton;
 
+    /**
+     * Start method of login page
+     * @param mainStage the primary window instance
+     */
     public void start(Stage mainStage){
         mainStage.setOnCloseRequest(this::close);
     }
 
+    /**
+     * Login operation
+     * @param actionEvent action event of hitting the login button
+     */
     public void login(ActionEvent actionEvent) {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
@@ -130,6 +146,11 @@ public class LoginPageController{
             }
         }
     }
+
+    /**
+     * Close window operation
+     * @param windowEvent window event of hitting the exit button
+     */
     public void close(WindowEvent windowEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Exit");

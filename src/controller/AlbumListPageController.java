@@ -16,7 +16,6 @@ import javafx.util.Callback;
 import model.Admin;
 import model.Album;
 import model.User;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Optional;
@@ -31,22 +30,68 @@ import java.util.Optional;
 
 public class AlbumListPageController {
 
+    /**
+     * ListView that contains albums
+     */
     @FXML ListView<Album> listView;
+    /**
+     * Create album button
+     */
     @FXML Button createAlbumButton;
+    /**
+     * Rename album button
+     */
     @FXML Button renameAlbumButton;
+    /**
+     * Delete album button
+     */
     @FXML Button deleteAlbumButton;
+    /**
+     * Open album button
+     */
     @FXML Button openAlbumButton;
+    /**
+     * Logout button
+     */
     @FXML Button logoutButton;
+    /**
+     * Search button
+     */
     @FXML Button goToSearchPageButton;
+    /**
+     * Text area to show the name of selected album
+     */
     @FXML Text albumName;
+    /**
+     * Text area to show the total number of photos of selected album
+     */
     @FXML Text numberOfPhotos;
+    /**
+     * Text area to show the range of date of selected album
+     */
     @FXML Text rangeOfDates;
+    /**
+     * TextField for user to enter the new name of an album
+     */
     @FXML TextField renameTextField;
+    /**
+     * TextField for user to enter the name when creating an album
+     */
     @FXML TextField creatAlbumTextField;
-
+    /**
+     * Observalbe list of albums
+     */
     private ObservableList<Album> obsList;
+    /**
+     * The login user instance
+     */
     private User user;
 
+    /**
+     * The start method of album list page
+     * @param mainStage the primary window instance
+     * @param loginUser the login user instance
+     */
     public void start(Stage mainStage, User loginUser){
         user = loginUser;
         obsList = FXCollections.observableArrayList();
@@ -75,6 +120,10 @@ public class AlbumListPageController {
         mainStage.setOnCloseRequest(this::close);
     }
 
+    /**
+     * Display the album details after selected an album
+     * @param mainStage the primary window instance
+     */
     public void showDetails(Stage mainStage){
         int index = listView.getSelectionModel().getSelectedIndex();
         if(index >= 0) {
@@ -96,6 +145,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Rename album operation
+     * @param actionEvent action event of hitting the rename album button
+     */
     public void renameAlbum(ActionEvent actionEvent) {
         int index = listView.getSelectionModel().getSelectedIndex();
         //If there is an album being selected
@@ -152,6 +205,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Create album operation
+     * @param actionEvent action event of hitting the create album button
+     */
     public void createAlbum(ActionEvent actionEvent) {
         String newAlbumName = creatAlbumTextField.getText();
         if(newAlbumName.length() == 0){
@@ -186,6 +243,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Open album operation
+     * @param actionEvent action event of hitting the open album button
+     */
     public void openAlbum(ActionEvent actionEvent) {
         int index = listView.getSelectionModel().getSelectedIndex();
         if(index >= 0){
@@ -222,6 +283,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Delete album operation
+     * @param actionEvent action event of hitting the delete album button
+     */
     public void deleteAlbum(ActionEvent actionEvent) {
         int index = listView.getSelectionModel().getSelectedIndex();
         //If there is an album being selected
@@ -260,6 +325,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Go to search page operation
+     * @param actionEvent action event of hitting the search button
+     */
     public void goToSearchPage(ActionEvent actionEvent) {
         User.writeData(user);
         try{
@@ -285,6 +354,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Logout operation
+     * @param actionEvent action event of hitting the logout button
+     */
     public void logout(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Logout");
@@ -326,6 +399,10 @@ public class AlbumListPageController {
         }
     }
 
+    /**
+     * Close window operation
+     * @param windowEvent window event of hitting the exit button
+     */
     public void close(WindowEvent windowEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Exit");

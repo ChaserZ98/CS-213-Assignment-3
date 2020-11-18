@@ -18,29 +18,63 @@ import model.User;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Optional;
+
 /**
- * Control the AdminPage
+ * The Controller of admin page
  * @author Feiyu Zheng
  * @author Ying Yu
  *
  *
  */
-
 public class AdminPageController {
 
+    /**
+     * TableView to show the user list
+     */
     @FXML TableView<User> tableView;
+    /**
+     * First column of TableView which contains users' username
+     */
     @FXML TableColumn<User, String> usernameColumn;
+    /**
+     * Second column of TableView which contains users' password
+     */
     @FXML TableColumn<User, String> passwordColumn;
+    /**
+     * TextField to enter username of new user
+     */
     @FXML TextField usernameTextField;
+    /**
+     * TextField to enter password of new user
+     */
     @FXML TextField passwordTextField;
+    /**
+     * Create user button
+     */
     @FXML Button createButton;
+    /**
+     * Delete user button
+     */
     @FXML Button deleteButton;
+    /**
+     * Logout button
+     */
     @FXML Button logoutButton;
 
+    /**
+     * Admin instance
+     */
     private Admin admin;
 
+    /**
+     * ObservableList of user accounts
+     */
     private ObservableList<User> obsList;
 
+    /**
+     * Start method of the admin page
+     * @param mainStage Stage instance
+     */
     public void start(Stage mainStage){
         try {
             admin = Admin.readData();
@@ -77,6 +111,10 @@ public class AdminPageController {
         mainStage.setOnCloseRequest(this::close);
     }
 
+    /**
+     * Create user operation
+     * @param actionEvent action event instance
+     */
     public void createUser(ActionEvent actionEvent) {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
@@ -118,6 +156,10 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Logout operation
+     * @param actionEvent action event instance
+     */
     public void logout(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Logout");
@@ -159,6 +201,10 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Delete user operation
+     * @param actionEvent action event instance
+     */
     public void deleteUser(ActionEvent actionEvent) {
         int index = tableView.getSelectionModel().getSelectedIndex();
         if(index >= 0){
@@ -195,6 +241,10 @@ public class AdminPageController {
         }
     }
 
+    /**
+     * Close window operation
+     * @param windowEvent window event instance
+     */
     public void close(WindowEvent windowEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Exit");

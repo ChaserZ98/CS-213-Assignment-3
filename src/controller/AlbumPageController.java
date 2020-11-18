@@ -22,56 +22,168 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.StringConverter;
 import model.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Stack;
 
+/**
+ * Controller of Album Page
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ */
 public class AlbumPageController {
 
+    /**
+     * Area to display album name
+     */
     @FXML Text albumNameText;
+    /**
+     * Tile pane which contains all the images
+     */
     @FXML TilePane tilePane;
+    /**
+     * Add photo Button
+     */
     @FXML Button addPhotoButton;
+    /**
+     * Delete photo
+     */
     @FXML Button deletePhotoButton;
+    /**
+     * Slideshow Button
+     */
     @FXML Button slideshowButton;
+    /**
+     * Drop-down Box for existed album
+     */
     @FXML ChoiceBox<Album> albumChoiceBox;
+    /**
+     * Copy photo button
+     */
     @FXML Button copyButton;
+    /**
+     * Move photo button
+     */
     @FXML Button moveButton;
+    /**
+     * Component to show the image
+     */
     @FXML ImageView imageView;
+    /**
+     * TextField for image caption
+     */
     @FXML TextField captionTextField;
+    /**
+     * Caption button
+     */
     @FXML Button captionButton;
+    /**
+     * Area to display the date of selected image
+     */
     @FXML Text dateText;
+    /**
+     * TableView to show tag of photo
+     */
     @FXML TableView<Tag> tableView;
+    /**
+     * First column of TableView which contains tagName
+     */
     @FXML TableColumn<Tag, String> tagNameColumn;
+    /**
+     * Second column of TableView which contains tagValue
+     */
     @FXML TableColumn<Tag, String> tagValueColumn;
+    /**
+     * Drop-down box for existed tagName
+     */
     @FXML ChoiceBox<Tag> tagNameChoiceBox;
+    /**
+     * Text that indicates where to enter the new tag name
+     */
     @FXML Text newTagNameText;
+    /**
+     * TextField for user to enter the new tag name
+     */
     @FXML TextField newTagNameTextField;
+    /**
+     * Text that indicates where to select the type of new tag
+     */
     @FXML Text newTagTypeText;
+    /**
+     * Drop-down box for user to select between two tag types
+     */
     @FXML ChoiceBox<String> newTagTypeChoiceBox;
+    /**
+     * Text that indicates where to enter the tag value
+     */
     @FXML Text tagValueText;
+    /**
+     * TextField for user to enter tag value
+     */
     @FXML TextField tagValueTextField;
+    /**
+     * Add tag button
+     */
     @FXML Button addTagButton;
+    /**
+     * Delete tag Button
+     */
     @FXML Button deleteTagButton;
+    /**
+     * Go back Button
+     */
     @FXML Button goBackButton;
+    /**
+     * Logout Button
+     */
     @FXML Button logoutButton;
 
+    /**
+     * Login user instance
+     */
     private User user;
+    /**
+     * Opened Album instance
+     */
     private Album album;
 
+    /**
+     * Observable list for thumbnail images
+     */
     ObservableList<Photo> thumbnailPhotos;
+    /**
+     * Observable list for existed tags
+     */
     ObservableList<Tag> existedTags;
+    /**
+     * Observable list for two tag types
+     */
     ObservableList<String> tagTypes;
-
+    /**
+     * Observable list for tags
+     */
     ObservableList<Tag> tagObservableList;
+    /**
+     * Observable list for existed album
+     */
     ObservableList<Album> albumObservableList;
-
+    /**
+     * StackPane arraylist. Each of them contains an ImageView component
+     */
     ArrayList<StackPane> imagePanes;
+    /**
+     * The StackPane of selected image
+     */
     StackPane selectedStackPane;
 
+    /**
+     * The start method of album page
+     * @param mainStage the primary window instance
+     * @param loginUser the login user instance
+     * @param openedAlbum the opened album instance
+     */
     public void start(Stage mainStage, User loginUser, Album openedAlbum){
         user = loginUser;
         album = openedAlbum;
@@ -164,6 +276,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Show hidden UI field operation
+     * @param mainStage the main window
+     */
     public void showInvisible(Stage mainStage){
         int index = tagNameChoiceBox.getSelectionModel().getSelectedIndex();
         System.out.println(index);
@@ -206,6 +322,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Show photo info operation
+     * @param mouseEvent mouse event of clicking on any photo
+     */
     private void showPhotoInfo(MouseEvent mouseEvent) {
         if(selectedStackPane != null){
             selectedStackPane.setStyle("-fx-border-width: 0;");
@@ -242,6 +362,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Add photo operation
+     * @param actionEvent action event of hitting add photo button
+     */
     public void addPhoto(ActionEvent actionEvent){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File("data"));
@@ -317,6 +441,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Delete photo operation
+     * @param actionEvent action event of hitting delete photo button
+     */
     public void deletePhoto(ActionEvent actionEvent){
         if(selectedStackPane != null){
             int index = imagePanes.indexOf(selectedStackPane);
@@ -365,6 +493,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Slideshow operation
+     * @param actionEvent action event of hitting slideshow button
+     */
     public void slideshow(ActionEvent actionEvent) {
         try{
             Stage primaryStage = (Stage)slideshowButton.getScene().getWindow();
@@ -388,6 +520,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Copy photo operation
+     * @param actionEvent action event of hitting copy button
+     */
     public void copyPhoto(ActionEvent actionEvent){
         if(selectedStackPane != null){
             Album selectedAlbum = albumChoiceBox.getSelectionModel().getSelectedItem();
@@ -433,6 +569,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Move photo operation
+     * @param actionEvent action event of hitting move button
+     */
     public void movePhoto(ActionEvent actionEvent){
         if(selectedStackPane != null){
             Album selectedAlbum = albumChoiceBox.getSelectionModel().getSelectedItem();
@@ -503,6 +643,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Caption operation
+     * @param actionEvent action event of hitting caption button
+     */
     public void caption(ActionEvent actionEvent){
         if(selectedStackPane != null){
             int index = imagePanes.indexOf(selectedStackPane);
@@ -552,6 +696,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Add tag operation
+     * @param actionEvent action event of hitting add tag button
+     */
     public void addTag(ActionEvent actionEvent){
         if(selectedStackPane != null){
             int index = imagePanes.indexOf(selectedStackPane);
@@ -714,6 +862,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Delete tag operation
+     * @param actionEvent action event of hitting delete tag button
+     */
     public void deleteTag(ActionEvent actionEvent){
         if(selectedStackPane != null){
             int tableViewIndex = tableView.getSelectionModel().getSelectedIndex();
@@ -774,6 +926,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Operation to go back to album list page
+     * @param actionEvent action event of hitting go back button
+     */
     public void goBack(ActionEvent actionEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Go Back");
@@ -815,6 +971,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Logout operation
+     * @param actionEvent action event of hitting logout button
+     */
     public void logout(ActionEvent actionEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Logout");
@@ -856,6 +1016,10 @@ public class AlbumPageController {
         }
     }
 
+    /**
+     * Close window operation
+     * @param windowEvent window event of hitting exit button on window
+     */
     public void close(WindowEvent windowEvent){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, null, ButtonType.YES, ButtonType.CANCEL);
         alert.setTitle("Exit");
