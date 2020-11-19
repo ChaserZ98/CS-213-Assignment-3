@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -59,10 +61,11 @@ public class SlideshowPageController {
      * Start method
      * @param album the album to store photos
      */
-    public void start(Album album){
+    public void start(Album album) throws FileNotFoundException {
 
         photos = album.getPhotos();
         Image firstImage = photos.get(0).getImage();
+
         currentIndex = 0;
         ImageView image = new ImageView(firstImage);
         image.setFitWidth(200);
@@ -81,7 +84,12 @@ public class SlideshowPageController {
         if(currentIndex >= photos.size()){
             currentIndex = 0;
         }
-        Image nextImage = photos.get(currentIndex).getImage();
+        Image nextImage = null;
+        try {
+            nextImage = photos.get(currentIndex).getImage();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         ImageView image = new ImageView(nextImage);
         image.setFitWidth(200);
         image.setFitHeight(200);
@@ -94,7 +102,12 @@ public class SlideshowPageController {
             currentIndex = photos.size()-1;
             if (currentIndex < 0) currentIndex = 0;
         }
-        Image nextImage = photos.get(currentIndex).getImage();
+        Image nextImage = null;
+        try {
+            nextImage = photos.get(currentIndex).getImage();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         ImageView image = new ImageView(nextImage);
         image.setFitWidth(200);
         image.setFitHeight(200);
