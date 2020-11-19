@@ -197,7 +197,7 @@ public class Album implements Serializable, Comparable<Album>{
                 result.add(photo);
             }
         }
-        return result.size() == 0 ? null : result;
+        return result.size() == 0 ? new ArrayList<>() : result;
     }
 
     /**
