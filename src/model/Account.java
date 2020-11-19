@@ -10,7 +10,13 @@ import java.io.Serializable;
  *
  */
 public abstract class Account implements Serializable {
+    /**
+     * username
+     */
     protected String username;
+    /**
+     * password
+     */
     protected String password;
 
     /**

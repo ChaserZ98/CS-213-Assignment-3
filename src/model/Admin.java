@@ -9,22 +9,24 @@ import java.util.ArrayList;
  *
  *
  */
-
 public class Admin extends Account{
+    /**
+     * ArrayList that contains users' info
+     */
     ArrayList<User> userList;
 
     /**
-     * create the final String value storeDir
+     * The directory where the serialized data is stored
      */
     public static final String storeDir = "local/admin";
 
     /**
-     * create the final String value storeFile
+     * The file where the serialized data is stored
      */
     public static final String storeFile = "admin.dat";
 
     /**
-     * the method to create admin account and password
+     * No-arg constructor
      */
     public Admin(){
         this.username = "admin";
@@ -33,7 +35,7 @@ public class Admin extends Account{
     }
 
     /**
-     * Check Repeat User
+     * Throws when there two user have same username
      */
     public static class RepeatedUserException extends RuntimeException {
         public RepeatedUserException(String s) {
@@ -42,7 +44,7 @@ public class Admin extends Account{
     }
 
     /**
-     * Check if the User Existed
+     * Throws when a user cannot be find
      */
     public static class UserNotExistedException extends RuntimeException {
         public UserNotExistedException(String s) {
@@ -51,7 +53,7 @@ public class Admin extends Account{
     }
 
     /**
-     * Serialization
+     * Throws when there is some error during serialization
      */
     public static class SerializationException extends RuntimeException{
         public SerializationException(String s){
@@ -60,7 +62,7 @@ public class Admin extends Account{
     }
 
     /**
-     * Deserialization
+     * Throws when there is some error during deserialization
      */
     public static class DeserializationException extends RuntimeException{
         public DeserializationException(String s){
@@ -69,9 +71,9 @@ public class Admin extends Account{
     }
 
     /**
-     * read the data for admin
-     * @return admin
-     * @throws FileNotFoundException
+     * The method to deserialize the admin class
+     * @return stored admin instance
+     * @throws FileNotFoundException throws there is some problem with the file address
      */
     public static Admin readData() throws FileNotFoundException {
         ObjectInputStream ois;
@@ -93,9 +95,9 @@ public class Admin extends Account{
     }
 
     /**
-     * Write data for admin
-     * @param admin admin
-     * @return boolean value
+     * The method to serialize the admin class
+     * @param admin the admin instance
+     * @return true if the data is correctly stored
      */
     public static boolean writeData(Admin admin){
         ObjectOutputStream oos;
@@ -112,7 +114,7 @@ public class Admin extends Account{
     }
 
     /**
-     * get UserList
+     * getter method for userList
      * @return userList
      */
     public ArrayList<User> getUserList(){
@@ -120,10 +122,10 @@ public class Admin extends Account{
     }
 
     /**
-     * use admin account to create new user
-     * @param username String variable for username
-     * @param password String variable for password
-     * @throws RepeatedUserException
+     * Called when the admin tries to create a new user
+     * @param username String type
+     * @param password String type
+     * @throws RepeatedUserException throws when admin tries to create a user that already exists
      */
     public void createNewUser(String username, String password) throws RepeatedUserException{
         if(username.equals("admin")){
@@ -145,9 +147,9 @@ public class Admin extends Account{
     }
 
     /**
-     * use admin account to delete exist user
+     * Delete user account
      * @param username String value for username
-     * @throws UserNotExistedException
+     * @throws UserNotExistedException throws when admin tries to delete a user that does not exist
      */
     public void deleteUser(String username) throws UserNotExistedException{
         User targetUser = new User(username);

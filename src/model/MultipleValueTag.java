@@ -3,16 +3,34 @@ package model;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**The MultipleValueTag which is a subclass of Tag
+ * @author Feiyu Zheng
+ * @author Ying Yu
+ */
 public class MultipleValueTag extends Tag{
+    /**
+     * The first tag value
+     */
     String tagValue;
+    /**
+     * List of tag values with the same tag Name
+     */
     ArrayList<String> tagValues;
 
+    /**
+     * Throws when trying to insert a tag value that is already in the list
+     */
     private static class RepeatedTagValueException extends RuntimeException{
         public RepeatedTagValueException(String s){
             super(s);
         }
     }
 
+    /**
+     * Multiple value tag constructor with one tag value
+     * @param tagName the tag name of a tag
+     * @param tagValue the tag value of a tag
+     */
     public MultipleValueTag(String tagName, String tagValue){
         this.tagName = tagName;
         tagValues = new ArrayList<>();
@@ -21,14 +39,26 @@ public class MultipleValueTag extends Tag{
         }
     }
 
+    /**
+     * Multiple value tag constructor without empty tag value
+     * @param tagName the tag name of a tag
+     */
     public MultipleValueTag(String tagName){
         this(tagName, "");
     }
 
+    /**
+     * getter method for tagValues
+     * @return tag values
+     */
     public ArrayList<String> getTagValues() {
         return this.tagValues;
     }
 
+    /**
+     * Get the first tag value of a multiple value tag
+     * @return the first tag value of a multiple value tag
+     */
     public String getTagValue(){
         if(tagValues.size() == 0){
             return "";
@@ -38,6 +68,10 @@ public class MultipleValueTag extends Tag{
         }
     }
 
+    /**
+     * Combine two multiple value tag with the same tag name
+     * @param tagValue input tag value
+     */
     public void addTagValue(String tagValue){
         if(this.tagValues.contains(tagValue)){
             throw new RepeatedTagValueException("The tag (" + this.tagName + "," + tagValue + ") already exists.");
@@ -47,6 +81,10 @@ public class MultipleValueTag extends Tag{
         }
     }
 
+    /**
+     * toString method
+     * @return string value of the combination of tagName and tagValue
+     */
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -63,6 +101,11 @@ public class MultipleValueTag extends Tag{
         return result.toString();
     }
 
+    /**
+     * Method to judge if two multiple value tag intercept
+     * @param o another object
+     * @return true they have some same combination
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,6 +127,10 @@ public class MultipleValueTag extends Tag{
         return false;
     }
 
+    /**
+     * Hash method
+     * @return hashcode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(tagName, tagValues);
