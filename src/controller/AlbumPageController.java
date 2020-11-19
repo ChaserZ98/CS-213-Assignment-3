@@ -282,8 +282,6 @@ public class AlbumPageController {
      */
     public void showInvisible(Stage mainStage){
         int index = tagNameChoiceBox.getSelectionModel().getSelectedIndex();
-        System.out.println(index);
-        System.out.println(tagNameChoiceBox.getItems());
         Tag selectedTag = existedTags.get(index);
         if(selectedTag != null) {
             if(selectedTag.getTagName().equals("other")){
@@ -506,11 +504,11 @@ public class AlbumPageController {
             AnchorPane albumListPage = (AnchorPane) loader.load();
             SlideshowPageController slideshowPageController = loader.getController();
             //slideshowPageController.start(primaryStage, user, album);
-            slideshowPageController.start(album);
+            slideshowPageController.start(primaryStage, user, album);
 
             Scene scene = new Scene(albumListPage);
             primaryStage.setScene(scene);
-            primaryStage.setTitle(fxmlPath);
+            primaryStage.setTitle("Slideshow");
         }
         catch(IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -959,7 +957,7 @@ public class AlbumPageController {
 
                 Scene scene = new Scene(loginPage);
                 primaryStage.setScene(scene);
-                primaryStage.setTitle(fxmlPath);
+                primaryStage.setTitle("Album List Page");
                 albumListPageController.start(primaryStage, user);
             }
             catch(IOException e){
@@ -1004,7 +1002,7 @@ public class AlbumPageController {
 
                 Scene scene = new Scene(loginPage);
                 primaryStage.setScene(scene);
-                primaryStage.setTitle(fxmlPath);
+                primaryStage.setTitle("Login Page");
                 loginPageController.start(primaryStage);
             }
             catch(IOException e){

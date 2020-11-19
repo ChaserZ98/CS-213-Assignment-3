@@ -25,7 +25,7 @@ public class Photos extends Application{
         try {
             String fxmlPath = "loginPage.fxml";
 
-            primaryStage.setTitle(fxmlPath);
+            primaryStage.setTitle("Login Page");
             primaryStage.setResizable(false);
 
             FXMLLoader loader = new FXMLLoader();
