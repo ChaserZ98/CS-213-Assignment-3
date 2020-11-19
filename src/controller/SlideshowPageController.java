@@ -63,7 +63,7 @@ public class SlideshowPageController {
      */
     public void start(Album album) throws FileNotFoundException {
 
-        photos = album.getPhotos();
+        photos = album.getPhotoList();
         Image firstImage = photos.get(0).getImage();
 
         currentIndex = 0;
