@@ -23,6 +23,7 @@ import java.util.Date;
  *
  */
 public class SearchPageController {
+
     public TextField tagValue01;
     public Button Logout;
     public TextField tagValue02;
