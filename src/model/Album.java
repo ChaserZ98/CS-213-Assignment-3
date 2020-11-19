@@ -240,4 +240,8 @@ public class Album implements Serializable, Comparable<Album>{
     public int compareTo(Album newAlbum){
         return this.name.compareTo(newAlbum.getName());
     }
+    public ArrayList<Photo> getPhotos(){
+
+        return this.photoList;
+    }
 }

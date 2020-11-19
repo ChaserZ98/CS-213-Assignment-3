@@ -28,10 +28,27 @@ import java.util.ArrayList;
  *
  */
 public class SlideshowPageController {
+    /**
+     * Create Slideshow button to go nextSlide
+     */
     public Button nextSlide;
+
+    /**
+     * Create Slideshow button to go previousSlide
+     */
     public Button previousSlide;
+    /**
+     * Create logout button
+     */
     public Button Logout;
+
+    /**
+     * Create a button to go AlbumPage
+     */
     public Button returnToAlbumPage;
+    /**
+     * Create a BorderPane for images
+     */
     public BorderPane borderPandID;
 
     int currentIndex = 0;

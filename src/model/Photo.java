@@ -33,6 +33,7 @@ public class Photo implements Serializable {
      */
     ArrayList<Tag> tagList;
 
+
     /**
      * Throws when trying add an existed tag to a photo
      */
