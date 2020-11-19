@@ -263,7 +263,7 @@ public class AlbumListPageController {
 
                 Scene scene = new Scene(adminPage);
                 primaryStage.setScene(scene);
-                primaryStage.setTitle(fxmlPath);
+                primaryStage.setTitle("Album Page");
             }
             catch(IOException e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -343,7 +343,7 @@ public class AlbumListPageController {
 
             Scene scene = new Scene(adminPage);
             primaryStage.setScene(scene);
-            primaryStage.setTitle(fxmlPath);
+            primaryStage.setTitle("Search Page");
         }
         catch(IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -386,7 +386,7 @@ public class AlbumListPageController {
 
                 Scene scene = new Scene(loginPage);
                 primaryStage.setScene(scene);
-                primaryStage.setTitle(fxmlPath);
+                primaryStage.setTitle("Login Page");
                 loginPageController.start(primaryStage);
             }
             catch(IOException e){

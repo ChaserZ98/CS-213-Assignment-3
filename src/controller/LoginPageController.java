@@ -79,7 +79,7 @@ public class LoginPageController{
 
                     Scene scene = new Scene(adminPage);
                     primaryStage.setScene(scene);
-                    primaryStage.setTitle(fxmlPath);
+                    primaryStage.setTitle("Admin Page");
                 }
                 catch(IOException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -128,7 +128,7 @@ public class LoginPageController{
 
                     Scene scene = new Scene(albumListPage);
                     primaryStage.setScene(scene);
-                    primaryStage.setTitle(fxmlPath);
+                    primaryStage.setTitle("Album List Page");
                 }
                 catch(IOException e){
                     Alert alert = new Alert(Alert.AlertType.ERROR);

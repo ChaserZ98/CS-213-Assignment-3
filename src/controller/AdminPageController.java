@@ -188,7 +188,7 @@ public class AdminPageController {
 
                 Scene scene = new Scene(loginPage);
                 primaryStage.setScene(scene);
-                primaryStage.setTitle(fxmlPath);
+                primaryStage.setTitle("Login Page");
                 loginPageController.start(primaryStage);
             }
             catch(IOException e){
