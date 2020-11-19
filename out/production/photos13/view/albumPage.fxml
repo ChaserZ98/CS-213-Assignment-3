@@ -1,74 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--Feiyu Zheng-->
+<!--Ying Yu-->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.ScrollPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlbumPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlbumPageController">
    <children>
-      <Text layoutX="12.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name:">
-         <font>
-            <Font name="Times New Roman Bold" size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="182.0" layoutY="407.0" mnemonicParsing="false" text="Rename Caption" />
-      <Button layoutX="103.0" layoutY="305.0" mnemonicParsing="false" text="Add Photo" />
-      <Button layoutX="194.0" layoutY="305.0" mnemonicParsing="false" text="Delete Photo" />
-      <Button layoutX="184.0" layoutY="366.0" mnemonicParsing="false" text="Add Caption" />
-      <Button layoutX="267.0" layoutY="548.0" mnemonicParsing="false" text="logout" />
-      <AnchorPane layoutX="14.0" layoutY="32.0" prefHeight="229.0" prefWidth="315.0">
-         <children>
-            <Text layoutX="84.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="thumbnail images and captions">
-               <font>
-                  <Font name="Times New Roman" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="74.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
-         </children>
-      </AnchorPane>
-      <TextField layoutX="9.0" layoutY="366.0" />
-      <TextField layoutX="10.0" layoutY="407.0" />
-      <Button layoutX="12.0" layoutY="548.0" mnemonicParsing="false" text="Back to album" />
-      <Button layoutX="292.0" layoutY="305.0" mnemonicParsing="false" text="Slideshow" />
-      <Text layoutX="390.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags:" />
-      <Text layoutX="387.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Value:" />
-      <Text layoutX="388.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creat new Tags Name:" />
-      <TextField layoutX="448.0" layoutY="513.0" prefHeight="26.0" prefWidth="98.0" />
-      <Button layoutX="417.0" layoutY="548.0" mnemonicParsing="false" text="Add a tag" />
-      <TextField layoutX="520.0" layoutY="481.0" prefHeight="26.0" prefWidth="98.0" />
-      <TableView layoutX="395.0" layoutY="314.0" prefHeight="129.0" prefWidth="209.0">
-        <columns>
-          <TableColumn prefWidth="106.39990234375" text="Tags Name" />
-          <TableColumn prefWidth="102.4000244140625" text="Tags Value" />
-        </columns>
+      <Text fx:id="albumNameText" layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name" style="-fx-font-family: 'Times New Roman'; -fx-font-size: 18pt; -fx-font-weight: bold" />
+
+      <ScrollPane layoutX="20.0" layoutY="30.0" prefWidth="350.0" maxWidth="350.0" prefHeight="540.0" maxHeight="540.0">
+         <TilePane fx:id="tilePane" layoutX="20.0" layoutY="30.0" prefWidth="350.0" maxWidth="350.0" prefHeight="540.0" maxHeight="540.0" vgap="10" hgap="10" style="-fx-background-color: white" />
+      </ScrollPane>
+
+      <Button fx:id="addPhotoButton" prefWidth="100.0" layoutX="20.0" layoutY="590.0" mnemonicParsing="false" text="Add Photo" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#addPhoto" />
+      <Button fx:id="deletePhotoButton" prefWidth="110.0" layoutX="140.0" layoutY="590.0" mnemonicParsing="false" text="Delete Photo" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#deletePhoto" />
+      <Button fx:id="slideshowButton" prefWidth="100.0" layoutX="270.0" layoutY="590.0" mnemonicParsing="false" text="Slideshow" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#slideshow" />
+
+      <Text wrappingWidth="130.0" layoutX="20.0" layoutY="660.0" text="Copy/Move To: " style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <ChoiceBox fx:id="albumChoiceBox" layoutX="170.0" layoutY="645.0" prefWidth="200.0" />
+
+      <Button fx:id="copyButton" prefWidth="160.0" layoutX="20.0" layoutY="690.0" mnemonicParsing="false" text="Copy Photo" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" onAction="#copyPhoto" />
+      <Button fx:id="moveButton" prefWidth="160.0" layoutX="210.0" layoutY="690.0" mnemonicParsing="false" text="Move Photo" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" onAction="#movePhoto" />
+
+      <ImageView fx:id="imageView" layoutX="420.0" layoutY="30.0" fitHeight="350.0" fitWidth="350.0" />
+
+      <Text wrappingWidth="80.0" layoutX="420.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <TextField fx:id="captionTextField" layoutX="505.0" layoutY="405.0" prefWidth="175.0" alignment="CENTER" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" />
+      <Button fx:id="captionButton" layoutX="690.0" layoutY="405.0" prefWidth="80.0" text="Caption" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#caption" />
+
+      <Text wrappingWidth="80.0" layoutX="420.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <Text fx:id="dateText" layoutX="505.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="175" textAlignment="CENTER" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+
+      <Text wrappingWidth="80.0" layoutX="420.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <TableView fx:id="tableView" layoutX="505.0" layoutY="480.0" prefHeight="120.0" prefWidth="265.0">
+         <columns>
+            <TableColumn fx:id="tagNameColumn" prefWidth="132.5" text="Tag Name" />
+            <TableColumn fx:id="tagValueColumn" prefWidth="132.5" text="Tag Value" />
+         </columns>
       </TableView>
-      <Text layoutX="386.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags Name:" />
-      <ChoiceBox layoutX="457.0" layoutY="450.0" prefWidth="150.0" />
-      <Button layoutX="546.0" layoutY="548.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="87.0" text="Delete a tag" />
-      <Button layoutY="305.0" mnemonicParsing="false" text="Diplay Photo" />
-      <Button layoutX="184.0" layoutY="500.0" mnemonicParsing="false" text="Move Photo" />
-      <Button layoutX="186.0" layoutY="459.0" mnemonicParsing="false" text="Copy Photo" />
-      <ChoiceBox layoutX="9.0" layoutY="458.0" prefHeight="26.0" prefWidth="161.0" />
-      <ChoiceBox layoutX="9.0" layoutY="500.0" prefHeight="26.0" prefWidth="161.0" />
-      <AnchorPane layoutX="342.0" layoutY="29.0" prefHeight="222.0" prefWidth="264.0">
-         <children>
-            <Text layoutX="84.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Show specific photo">
-               <font>
-                  <Font name="Times New Roman" size="12.0" />
-               </font>
-            </Text>
-            <Text layoutX="74.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
-         </children>
-      </AnchorPane>
-      <Text layoutX="372.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date-time of capture:" wrappingWidth="164.79999999999995" />
-      <Text layoutX="444.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="164.79999999999995" />
-      <Text layoutX="371.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption:" />
-      <Text layoutX="420.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="128.923828125" />
-      <Button layoutX="159.0" layoutY="548.0" mnemonicParsing="false" text="Search" />
+
+      <Text wrappingWidth="130.0" layoutX="505.0" layoutY="630.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Name: " style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <ChoiceBox fx:id="tagNameChoiceBox" layoutX="640.0" layoutY="615.0" prefWidth="130.0" />
+
+      <Text fx:id="newTagNameText" wrappingWidth="130.0" layoutX="505.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Tag Name:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" visible="false" />
+      <TextField fx:id="newTagNameTextField" layoutX="640.0" layoutY="645.0" prefWidth="130.0" alignment="CENTER" visible="false" />
+      <Text fx:id="newTagTypeText" wrappingWidth="130.0" layoutX="505.0" layoutY="690.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Tag Type: " style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" visible="false" />
+      <ChoiceBox fx:id="newTagTypeChoiceBox" layoutX="640.0" layoutY="675.0" prefWidth="130.0" visible="false" />
+
+      <Text fx:id="tagValueText" wrappingWidth="130.0" layoutX="505.0" layoutY="660.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value:" style="-fx-font-family: 'Times New Roman';-fx-font-size: 14pt;" />
+      <TextField fx:id="tagValueTextField" layoutX="640.0" layoutY="645.0" prefWidth="130.0" alignment="CENTER"/>
+      <Button fx:id="addTagButton" prefWidth="125.0" layoutX="505.0" layoutY="690.0" mnemonicParsing="false" text="Add Tag" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#addTag" />
+      <Button fx:id="deleteTagButton" prefWidth="125" layoutX="640.0" layoutY="690.0" mnemonicParsing="false" text="Delete Tag" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#deleteTag" />
+
+      <Button fx:id="goBackButton" prefWidth="160.0" layoutX="20.0" layoutY="750.0" mnemonicParsing="false" text="Go Back" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#goBack" />
+      <Button fx:id="logoutButton" prefWidth="160.0" layoutX="210.0" layoutY="750.0" mnemonicParsing="false" text="Logout" style="-fx-font-family: 'Times New Roman';-fx-font-size: 12pt;" onAction="#logout" />
+
    </children>
 </AnchorPane>
