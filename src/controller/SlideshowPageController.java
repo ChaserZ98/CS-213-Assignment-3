@@ -76,7 +76,7 @@ public class SlideshowPageController {
     }
 
     /**
-     *
+     * go to next photo
      * @param actionEvent
      */
     public void nextSlideClicked(ActionEvent actionEvent) {
@@ -96,6 +96,10 @@ public class SlideshowPageController {
         borderPandID.setCenter(image);
     }
 
+    /**
+     * go to previous photo
+     * @param actionEvent
+     */
     public void previousSlideClicked(ActionEvent actionEvent) {
         currentIndex--;
         if(currentIndex < 0){
@@ -115,6 +119,7 @@ public class SlideshowPageController {
     }
 
     public void LogoutClicked(ActionEvent actionEvent) {
+
     }
 
     public void returnToAlbumPageClicked(ActionEvent actionEvent) {
