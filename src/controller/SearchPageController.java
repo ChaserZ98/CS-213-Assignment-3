@@ -111,6 +111,9 @@ public class SearchPageController {
      * @param actionEvent action event of hitting search by date Button
      */
     public void searchByDate(ActionEvent actionEvent){
+        thumbnailPhotos.clear();
+        imagePanes.clear();
+        tilePane.getChildren().clear();
         LocalDate earliestDatePickerValue = earliestDatePicker.getValue();
         LocalDate latestDatePickerValue = latestDatePicker.getValue();
         if(earliestDatePickerValue != null && latestDatePickerValue != null){
@@ -230,6 +233,9 @@ public class SearchPageController {
      * @param actionEvent action event of hitting search by tag Button
      */
     public void searchByTag(ActionEvent actionEvent){
+        thumbnailPhotos.clear();
+        imagePanes.clear();
+        tilePane.getChildren().clear();
         if(isAnd){
             if(tagValue1TextField.getText().length() == 0 || tagValue2TextField.getText().length() == 0){
                 Alert alert = new Alert(Alert.AlertType.ERROR, "If you selected and, you must enter two tag combinations.", ButtonType.OK);

@@ -503,8 +503,7 @@ public class AlbumPageController {
             loader.setLocation(getClass().getResource("/view/" + fxmlPath));
             AnchorPane albumListPage = (AnchorPane) loader.load();
             SlideshowPageController slideshowPageController = loader.getController();
-            //slideshowPageController.start(primaryStage, user, album);
-            slideshowPageController.start(album);
+            slideshowPageController.start(primaryStage, user, album);
 
             Scene scene = new Scene(albumListPage);
             primaryStage.setScene(scene);

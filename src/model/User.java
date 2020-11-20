@@ -338,7 +338,7 @@ public class User extends Account{
      */
     public ArrayList<Photo> searchPhotoByDate(Date earliestDate, Date latestDate){
         if(this.albumList.size() == 0){
-            return null;
+            return new ArrayList<>();
         }
         ArrayList<Photo> result = new ArrayList<>();
         for(Album album : this.albumList){
@@ -351,7 +351,7 @@ public class User extends Account{
                 }
             }
         }
-        return result.size() == 0 ? null : result;
+        return result.size() == 0 ? new ArrayList<>() : result;
     }
 
     /**
